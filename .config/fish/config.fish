@@ -53,4 +53,5 @@ begin
         source $AUTOJUMP_PATH
     end
 end
+set -g fish_user_paths "/usr/local/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
