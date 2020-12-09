@@ -1,7 +1,7 @@
 [user]
-	email = v@vladde.net
-	name = Vladimirs Nordholm
+  email = v@vladde.net
+  name = Vladimirs Nordholm
 [pull]
-	rebase = false
+  rebase = false
 [init]
-	defaultBranch = main
+  defaultBranch = main
