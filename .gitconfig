@@ -1,0 +1,7 @@
+[user]
+	email = v@vladde.net
+	name = Vladimirs Nordholm
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
