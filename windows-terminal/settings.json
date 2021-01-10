@@ -1,0 +1,151 @@
+// https://aka.ms/terminal-documentation
+{
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "copyOnSelect": false,
+    "copyFormatting": false,
+    "profiles":
+    {
+        "defaults":
+        {
+            "startingDirectory" : "%USERPROFILE%\\Projects"
+        },
+        "list":
+        [
+            {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore",
+                "fontFace": "JetBrains Mono",
+                "fontSize": 10,
+                "colorScheme": "Campbell"
+            },
+            {
+                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "source": "Windows.Terminal.Wsl",
+                "fontFace": "JetBrains Mono",
+                "fontSize": 10,
+                "colorScheme": "Argonaut"
+            },
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "name": "Windows PowerShell",
+                "commandline": "powershell.exe",
+                "hidden": true,
+                "fontFace": "The One True Font (System 8x12)",
+                "fontSize": 12,
+                "colorScheme": "Campbell"
+            },
+            {
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "name": "Command Prompt",
+                "commandline": "cmd.exe",
+                "hidden": false,
+                "fontFace": "The One True Font (System 8x12)",
+                "fontSize": 12,
+                "colorScheme": "Campbell"
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": true,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            }
+        ]
+    },
+    // https://aka.ms/terminal-color-schemes
+    "schemes": [
+        {
+            "name" : "Campbell",
+            "cursorColor": "#FF260E",
+            "selectionBackground": "#FFFFFF",
+            "background" : "#101421",
+            "foreground" : "#F2F2F2",
+            "black" : "#101421",
+            "blue" : "#0037DA",
+            "cyan" : "#3A96DD",
+            "green" : "#13A10E",
+            "purple" : "#881798",
+            "red" : "#FF260E",
+            "white" : "#CCCCCC",
+            "yellow" : "#C19C00",
+            "brightBlack" : "#767676",
+            "brightBlue" : "#3B78FF",
+            "brightCyan" : "#61D6D6",
+            "brightGreen" : "#16C60C",
+            "brightPurple" : "#B4009E",
+            "brightRed" : "#E74856",
+            "brightWhite" : "#F2F2F2",
+            "brightYellow" : "#FFC400"
+        },
+        {
+            "name": "Dark+",
+            "foreground": "#cccccc",
+            "background": "#1e1e1e",
+            "cursorColor": "#cccccc",
+            "black": "#000000",
+            "red": "#c62f37",
+            "green": "#37be78",
+            "yellow": "#e2e822",
+            "blue": "#396ec7",
+            "purple": "#b835bc",
+            "cyan": "#3ba7cc",
+            "white": "#e5e5e5",
+            "brightBlack": "#666666",
+            "brightRed": "#e94a51",
+            "brightGreen": "#45d38a",
+            "brightYellow": "#f2f84a",
+            "brightBlue": "#4e8ae9",
+            "brightPurple": "#d26ad6",
+            "brightCyan": "#49b7da",
+            "brightWhite": "#e5e5e5"
+        },
+        {
+            "name": "Argonaut",
+            "cursorColor": "#FF000F",
+            "selectionBackground": "#FFFFFF",
+            "foreground": "#FFFAF4",
+            "background": "#131522",
+            "black": "#222222",
+            "red": "#FF000F",
+            "green": "#8CE10A",
+            "yellow": "#FFB900",
+            "blue": "#008EF9",
+            "purple": "#6C43A6",
+            "cyan": "#00D8EC",
+            "white": "#FFFFFF",
+            "brightBlack": "#444444",
+            "brightRed": "#FF273F",
+            "brightGreen": "#ABE15B",
+            "brightYellow": "#FFD242",
+            "brightBlue": "#0092FF",
+            "brightPurple": "#9A5FEC",
+            "brightCyan": "#67FFF0",
+            "brightWhite": "#FFFFFF"
+        }
+    ],
+
+    // Add custom keybindings to this array.
+    // To unbind a key combination from your defaults.json, set the command to "unbound".
+    // To learn more about keybindings, visit https://aka.ms/terminal-keybindings
+    "keybindings":
+    [
+        // Copy and paste are bound to Ctrl+Shift+C and Ctrl+Shift+V in your defaults.json.
+        // These two lines additionally bind them to Ctrl+C and Ctrl+V.
+        // To learn more about selection, visit https://aka.ms/terminal-selection
+        { "command": {"action": "copy", "singleLine": false }, "keys": "ctrl+c" },
+        { "command": "paste", "keys": "ctrl+v" },
+
+        // Press Ctrl+Shift+F to open the search box
+        { "command": "find", "keys": "ctrl+shift+f" },
+
+        // Press Alt+Shift+D to open a new pane.
+        // - "split": "auto" makes this pane open in the direction that provides the most surface area.
+        // - "splitMode": "duplicate" makes the new pane use the focused pane's profile.
+        // To learn more about panes, visit https://aka.ms/terminal-panes
+        { "command": { "action": "splitPane", "split": "auto", "splitMode": "duplicate" }, "keys": "alt+shift+d" }
+    ]
+}
