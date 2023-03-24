@@ -1,52 +1,25 @@
-# me
 [user]
   email = v@vladde.net
   name = Vladimirs Nordholm
   signingkey = C6FE933DC85854678BC1237E49E459B07DC741AC
 
-# extra
+[commit]
+  gpgsign = true
+
+[tag]
+  gpgsign = true
+
 [alias]
   co = checkout
   br = branch
   st = status
   cm = commit
   
-  adda = add -A
   unstage = reset HEAD --
   tree = log --graph --all
   filehist = log -p -M --follow --stat --
   diffs = diff --staged
+
 [core]
   editor = nvim
   autocrlf = false
-
-# tools
-[diff]
-  tool = code
-[difftool "code"]
-  cmd = code --wait --diff $LOCAL $REMOTE
-[filter "lfs"]
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
-  clean = git-lfs clean -- %f
-
-# colors
-[color]
-  branch = auto
-  diff = auto
-  status = auto
-  ui = auto
-[color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
-[color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-[color "status"]
-  added = green
-  changed = yellow
-  untracked = cyan
