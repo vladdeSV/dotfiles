@@ -23,3 +23,6 @@
 [core]
   editor = nvim
   autocrlf = false
+
+[pull]
+  rebase = false
