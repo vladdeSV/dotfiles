@@ -9,6 +9,16 @@
 [tag]
   gpgsign = true
 
+[init]
+  defaultBranch = main
+
+[core]
+  editor = nvim
+  autocrlf = false
+
+[pull]
+  rebase = false
+
 [alias]
   co = checkout
   br = branch
@@ -20,9 +30,3 @@
   filehist = log -p -M --follow --stat --
   diffs = diff --staged
 
-[core]
-  editor = nvim
-  autocrlf = false
-
-[pull]
-  rebase = false
