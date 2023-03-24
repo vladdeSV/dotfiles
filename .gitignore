@@ -1,3 +1,13 @@
-.DS_Store
-
-.config/gh/hosts.yml
+/.DS_Store
+/.bash_history
+/.cache
+/.config/gh/hosts.yml
+/.gnupg
+/.local
+/.profile
+/.ssh
+/.tea
+/.vscode-server
+/.wget-hsts
+/dev
+/files
