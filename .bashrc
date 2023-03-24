@@ -1,6 +1,7 @@
 alias vim=nvim
 alias ls=exa
 alias ll='exa -la'
+alias ':q'='exit'
 
 # wsl
 if grep -qi microsoft /proc/version; then
