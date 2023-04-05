@@ -5,6 +5,7 @@
 /.bash_sessions
 /.cache
 /.config/gh/hosts.yml
+/.config/iterm2
 /.gnupg
 /.lesshst
 /.local
