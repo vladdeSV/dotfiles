@@ -8,9 +8,6 @@ alias ':q'='exit'
 #  alias open=explorer.exe
 # fi
 
-# mac
-alias git='tea git'
-
 precmd() { print -rP "%F{8}%~" }
 export PROMPT="%F{8}%(!.#.$)%f "
 export GPG_TTY=$(tty)
