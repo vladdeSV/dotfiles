@@ -8,7 +8,7 @@ set nowrap
 set smartcase
 
 " tabs
-set tabstop=2
+set tabstop=8
 set softtabstop=2
 set shiftwidth=2
 set expandtab
