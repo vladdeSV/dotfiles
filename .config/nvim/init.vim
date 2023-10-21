@@ -20,5 +20,7 @@ set statusline=(%l,%c)\ %F
 " ignore just a q press. h*ck i dislike this command...
 map q <Nop>
 
+au BufRead,BufNewFile *.klg set filetype=klog
+
 " destroy all software
 colorscheme garybernhardt
