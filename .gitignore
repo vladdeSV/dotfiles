@@ -24,6 +24,7 @@
 /.ssh
 /.swiftpm
 /.tea
+/.vscode
 /.vscode-server
 /.wget-hsts
 /.zsh_history
