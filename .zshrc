@@ -12,4 +12,4 @@ precmd() { print -rP "%F{8}%~" }
 export PROMPT="%F{8}%(!.#.$)%f "
 export GPG_TTY=$(tty)
 
-test -d "$HOME/.tea" && source <("$HOME/.tea/tea.xyz/v*/bin/tea" --magic=zsh --silent)
+source <(pkgx --shellcode)  #docs.pkgx.sh/shellcode
