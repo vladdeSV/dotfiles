@@ -6,6 +6,11 @@ set numberwidth=4
 set scrolloff=3
 set nowrap
 set smartcase
+set mouse=
+set linebreak
+set spelllang=en_us
+autocmd FileType markdown setlocal spell
+autocmd FileType markdown setlocal complete+=kspell
 
 " tabs
 set tabstop=8
