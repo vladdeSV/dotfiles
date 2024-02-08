@@ -30,3 +30,5 @@
   filehist = log -p -M --follow --stat --
   diffs = diff --staged
 
+[rerere]
+  enabled = true
