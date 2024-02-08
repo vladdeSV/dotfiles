@@ -11,8 +11,7 @@ alias ip-local="ifconfig en0 | grep 'inet ' | cut -d' ' -f2 | sed 's/addr://' "
 #  alias open=explorer.exe
 # fi
 
-precmd() { print -rP "%F{8}%~" }
-export PROMPT="%F{8}%(!.#.$)%f "
+export PROMPT="%F{4}%1~ %F{8}%#%f "
 export GPG_TTY=$(tty)
 
 source <(pkgx --shellcode)  #docs.pkgx.sh/shellcode
