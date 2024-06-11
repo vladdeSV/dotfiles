@@ -26,3 +26,8 @@ if [ "$(uname)" = "Darwin" ]; then
   alias ip-local="ifconfig en0 | grep 'inet ' | cut -d' ' -f2 | sed 's/addr://' "
   alias week="date +%V"
 fi
+
+# bun completions
+if [ -s "$HOME/.bun/_bun" ]; then
+  source "$HOME/.bun/_bun"
+fi
