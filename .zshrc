@@ -19,3 +19,10 @@ fi
 if [ -s /proc/version ] && grep -qi microsoft /proc/version; then
   alias open=explorer.exe
 fi
+
+# macOS
+if [ "$(uname)" = "Darwin" ]; then
+  alias finder 'open -a Finder .'
+  alias ip-local="ifconfig en0 | grep 'inet ' | cut -d' ' -f2 | sed 's/addr://' "
+  alias week="date +%V"
+fi
