@@ -26,6 +26,8 @@ if [ "$(uname)" = "Darwin" ]; then
 fi
 
 # bun completions
-if [ -s "$HOME/.bun/_bun" ]; then
-  source "$HOME/.bun/_bun"
-fi
+test -e "${HOME}/.bun/_bun" && source "${HOME}/.bun/_bun"
+
+# iterm2 integration
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
