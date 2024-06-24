@@ -17,6 +17,7 @@ set statusline=(%l,%c)\ %F
 map q <Nop> " ignore just a q press. h*ck i dislike this command...
 
 " map Ctrl+C to yank to clipboard
+" (can't figure out how to do ⌘+C on iTerm2 (also this is more cross-platform))
 set clipboard+=unnamedplus
 nnoremap <C-c> "+y
 vnoremap <C-c> "+y
