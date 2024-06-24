@@ -1,4 +1,4 @@
-colorscheme garybernhardt " destroy all software
+colorscheme vladde
 
 " editor general
 set tabstop=8
