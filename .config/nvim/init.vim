@@ -13,7 +13,7 @@ set smartcase
 set linebreak
 set spelllang=en_us
 set laststatus=2
-set statusline=(%l,%c)\ %F
+set statusline=%f%=(%l,%c)
 map q <Nop> " ignore just a q press. h*ck i dislike this command...
 
 " map Ctrl+C to yank to clipboard
