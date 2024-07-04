@@ -5,7 +5,6 @@ alias ':q'='exit'
 
 alias ip-public='dig +short myip.opendns.com @resolver1.opendns.com'
 
-export PROMPT="%F{4}%1~ %F{8}%#%f "
 export GPG_TTY=$(tty)
 
 # pkgx
@@ -39,3 +38,37 @@ if [ -d "$HOME/.pkgx/imagemagick.org/v*/bin/" ]; then
   export PATH="$HOME/.pkgx/imagemagick.org/v*/bin/:$PATH"
 fi
 
+
+# git in prompt
+git_prompt_info() {
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+
+    dynamic=""
+    dynamic+="%f("
+    dynamic+="%F{11}$(git symbolic-ref --short HEAD)%f"
+    
+    if [[ -n $(git diff --cached) ]]; then
+      dynamic+="%F{9}"
+      dynamic+="?"
+    fi
+
+    if [[ -n $(git diff) ]]; then
+      dynamic+="%F{9}"
+      dynamic+="!"
+    fi
+
+    if [[ -n $(git ls-files --others --exclude-standard) ]]; then
+      dynamic+="%F{8}"
+      dynamic+="."
+    fi
+
+    dynamic+="%f)"
+
+
+    echo -n "$dynamic"
+  fi
+}
+
+precmd() {
+  export PROMPT="%F{12}%1~$(git_prompt_info) %F{8}%(!.#.>)%f "
+}
