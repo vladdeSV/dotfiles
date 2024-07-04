@@ -25,8 +25,12 @@ if [ "$(uname)" = "Darwin" ]; then
   alias week="date +%V"
 fi
 
-# bun completions
-test -e "${HOME}/.bun/_bun" && source "${HOME}/.bun/_bun"
+# bun
+if [ -d "$HOME/.bun" ]; then
+    export BUN_INSTALL="$HOME/.bun"
+    export PATH="$BUN_INSTALL/bin:$PATH"
+    [ -e "${HOME}/.bun/_bun" ] && source "${HOME}/.bun/_bun"
+fi
 
 # iterm2 integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
