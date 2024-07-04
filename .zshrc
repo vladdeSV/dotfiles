@@ -31,3 +31,7 @@ test -e "${HOME}/.bun/_bun" && source "${HOME}/.bun/_bun"
 # iterm2 integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+if [ -d "$HOME/.pkgx/imagemagick.org/v*/bin/" ]; then
+  export PATH="$HOME/.pkgx/imagemagick.org/v*/bin/:$PATH"
+fi
+
