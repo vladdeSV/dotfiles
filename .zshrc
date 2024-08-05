@@ -7,6 +7,9 @@ alias ip-public='dig +short myip.opendns.com @resolver1.opendns.com'
 
 export GPG_TTY=$(tty)
 
+# easy klog edit
+alias tid='nvim +$ ~/Documents/tid.klg +"set syntax=klog"'
+
 # pkgx
 if command -v pkgx &> /dev/null; then
   source <(pkgx --shellcode) #docs.pkgx.sh/shellcode
