@@ -3,6 +3,7 @@
 /.config/gh/hosts.yml
 /.config/github-copilot
 /.config/iterm2
+/.config/nvim/lazy-lock.json
 /.config/simple-update-notifier
 /.config/zed/.tmp*
 /.config/zed/**/*.mdb
