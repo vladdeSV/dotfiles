@@ -17,10 +17,10 @@ set statusline=%f%=(%l,%c)
 map q <Nop> " ignore just a q press. h*ck i dislike this command...
 
 " map Ctrl+C to yank to clipboard
-" (can't figure out how to do ⌘+C on iTerm2 (also this is more cross-platform))
-set clipboard+=unnamedplus
+" (can't figure out how to do ⌘+C on iTerm2 (also this is more cross-platform since my non-mac machines don't have ⌘))
 nnoremap <C-c> "+y
 vnoremap <C-c> "+y
+" set clipboard+=unnamedplus " i think this merges my clipboard with vim's. unsure if i want that.
 
 language en_US
 autocmd FileType markdown setlocal spell
