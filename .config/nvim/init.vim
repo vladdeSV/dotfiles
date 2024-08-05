@@ -15,6 +15,7 @@ set statusline=%f%=(%l,%c)
 map q <Nop> " ignore just a q press. h*ck i dislike this command...
 
 hi LineNr ctermfg=7
+hi Visual ctermbg=15
 
 " map Ctrl+C to yank to clipboard
 " (can't figure out how to do ⌘+C on iTerm2 (also this is more cross-platform since my non-mac machines don't have ⌘))
