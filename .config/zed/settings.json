@@ -1,0 +1,21 @@
+{
+  "tab_size": 2,
+  "format_on_save": "on",
+  "use_autoclose": false,
+  "use_auto_surround": false,
+  "remove_trailing_whitespace_on_save": true,
+  "extend_comment_on_newline": false,
+  "theme": {
+    "mode": "system",
+    "light": "Ayu Light",
+    "dark": "Ayu Dark"
+  },
+  "languages": {
+    "Plain Text": {
+      "show_inline_completions": false
+    },
+    "Markdown": {
+      "show_inline_completions": false
+    }
+  }
+}
