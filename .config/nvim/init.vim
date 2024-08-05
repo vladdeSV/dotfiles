@@ -1,5 +1,3 @@
-colorscheme vladde
-
 " editor general
 set tabstop=8
 set softtabstop=2
@@ -15,6 +13,8 @@ set spelllang=en_us
 set laststatus=2
 set statusline=%f%=(%l,%c)
 map q <Nop> " ignore just a q press. h*ck i dislike this command...
+
+hi LineNr ctermfg=7
 
 " map Ctrl+C to yank to clipboard
 " (can't figure out how to do ⌘+C on iTerm2 (also this is more cross-platform since my non-mac machines don't have ⌘))
