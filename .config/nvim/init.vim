@@ -29,4 +29,5 @@ autocmd FileType markdown setlocal complete+=kspell
 " klog
 au BufRead,BufNewFile *.klg set filetype=klog
 command! Kdate execute "normal a" . strftime("%Y-%m-%d") . " (8h!)"
+autocmd BufWritePre *.klg if getline('$') !=# '' | call append('$', '') | endif
 
