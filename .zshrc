@@ -70,5 +70,5 @@ git_prompt_info() {
 }
 
 precmd() {
-  export PROMPT="%F{12}%1~$(git_prompt_info) %F{8}%(!.#.>)%f "
+  export PROMPT="%F{12}%1~$(git_prompt_info) %f%(!.#.$)%f "
 }
