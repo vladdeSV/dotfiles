@@ -1,6 +1,6 @@
 alias vim=nvim
 alias ls=exa
-alias ll='exa -la'
+alias ll='eza -la'
 alias ':q'='exit'
 
 alias ip-public='dig +short myip.opendns.com @resolver1.opendns.com'
