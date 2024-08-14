@@ -10,11 +10,6 @@ export GPG_TTY=$(tty)
 # easy klog edit
 alias tid='nvim +$ ~/Documents/tid.klg +"set syntax=klog"'
 
-# pkgx
-if command -v pkgx &> /dev/null; then
-  source <(pkgx --shellcode) #docs.pkgx.sh/shellcode
-fi
-
 # wsl
 if [ -s /proc/version ] && grep -qi microsoft /proc/version; then
   alias open=explorer.exe
@@ -38,11 +33,6 @@ fi
 
 # iterm2 integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-if [ -d "$HOME/.pkgx/imagemagick.org/v*/bin/" ]; then
-  export PATH="$HOME/.pkgx/imagemagick.org/v*/bin/:$PATH"
-fi
-
 
 # git in prompt
 git_prompt_info() {
