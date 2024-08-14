@@ -1,5 +1,5 @@
 alias vim=nvim
-alias ls=exa
+alias ls=eza
 alias ll='eza -la'
 alias ':q'='exit'
 
