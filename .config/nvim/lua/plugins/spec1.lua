@@ -7,5 +7,9 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     opts = {}
-  }
+  },
+
+  'tpope/vim-fugitive',
+  'junegunn/gv.vim',
+  'terroo/vim-simple-emoji'
 }
