@@ -1,3 +1,5 @@
+set notermguicolors 
+
 " editor general
 set tabstop=8
 set softtabstop=2
