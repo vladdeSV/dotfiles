@@ -23,7 +23,6 @@ hi Visual ctermbg=15
 " (can't figure out how to do ⌘+C on iTerm2 (also this is more cross-platform since my non-mac machines don't have ⌘))
 nnoremap <C-c> "+y
 vnoremap <C-c> "+y
-" set clipboard+=unnamedplus " i think this merges my clipboard with vim's. unsure if i want that.
 
 language en_US
 autocmd FileType markdown setlocal spell
