@@ -3,7 +3,7 @@ alias ls=exa
 alias ll='eza -la'
 alias ':q'='exit'
 
-alias ip-public='dig +short myip.opendns.com @resolver1.opendns.com'
+alias public-ip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 export GPG_TTY=$(tty)
 
@@ -18,7 +18,7 @@ fi
 # macOS
 if [ "$(uname)" = "Darwin" ]; then
   alias finder 'open -a Finder .'
-  alias ip-local="ifconfig en0 | grep 'inet ' | cut -d' ' -f2 | sed 's/addr://' "
+  alias local-ip="ifconfig en0 | grep 'inet ' | cut -d' ' -f2 | sed 's/addr://' "
   alias day="date +%A"
   alias week="date +%V"
   alias year="date +%Y"
