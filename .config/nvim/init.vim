@@ -24,9 +24,10 @@ hi Visual ctermbg=15
 nnoremap <C-c> "+y
 vnoremap <C-c> "+y
 
-language en_US
-autocmd FileType markdown setlocal spell
-autocmd FileType markdown setlocal complete+=kspell
+language en_us
+set spelllang=en_us,sv
+autocmd FileType markdown,klog setlocal spell
+autocmd FileType markdown,klog setlocal complete+=kspell
 
 " klog
 au BufRead,BufNewFile *.klg set filetype=klog
