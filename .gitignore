@@ -7,3 +7,5 @@
 /.config/simple-update-notifier
 /.config/zed/.tmp*
 /.config/zed/**/*.mdb
+/.config/zsh/.zcompdump
+/.config/zsh/.zsh_history
