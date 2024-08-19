@@ -1,15 +1,33 @@
+# paths
+declare -A paths
+paths[brew]="/opt/homebrew/bin/brew"
+paths[jetbrains]="$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+paths[bun]="$HOME/.bun"
+paths[iterm2]="$HOME/.iterm2_shell_integration.zsh"
+
 # brew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [ -x "${paths[brew]}" ]; then
+  eval "$(${paths[brew]} shellenv)"
+fi
 
 # jetbrains toolbox
-export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
-
-# bun
-if [ -d "$HOME/.bun" ]; then
-    export BUN_INSTALL="$HOME/.bun"
-    export PATH="$BUN_INSTALL/bin:$PATH"
-    [ -e "${HOME}/.bun/_bun" ] && source "${HOME}/.bun/_bun"
+if [ -d "${paths[jetbrains]}" ]; then
+  export PATH="$PATH:${paths[jetbrains]}"
 fi
 
 # iterm2 integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+if [ -e "${paths[iterm2]}" ]; then
+  source "${paths[iterm2]}"
+fi
+
+# bun
+if [ -d "${paths[bun]}" ]; then
+    export BUN_INSTALL="${paths[bun]}"
+    export PATH="$PATH:$BUN_INSTALL/bin"
+
+    if [ -e "${BUN_INSTALL}/_bun" ]; then
+        source "${BUN_INSTALL}/_bun"
+    fi
+fi
+
+unset paths

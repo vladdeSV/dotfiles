@@ -7,9 +7,6 @@ alias public-ip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 export GPG_TTY=$(tty)
 
-# easy klog edit
-alias tid='nvim +$ ~/Documents/tid.klg +"set syntax=klog"'
-
 # wsl
 if [ -s /proc/version ] && grep -qi microsoft /proc/version; then
   alias open=explorer.exe
@@ -22,17 +19,10 @@ if [ "$(uname)" = "Darwin" ]; then
   alias day="date +%A"
   alias week="date +%V"
   alias year="date +%Y"
-fi
 
-# bun
-if [ -d "$HOME/.bun" ]; then
-    export BUN_INSTALL="$HOME/.bun"
-    export PATH="$BUN_INSTALL/bin:$PATH"
-    [ -e "${HOME}/.bun/_bun" ] && source "${HOME}/.bun/_bun"
+  # easy klog edit
+  alias tid='nvim +$ ~/Documents/tid.klg +"set syntax=klog"'
 fi
-
-# iterm2 integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # git in prompt
 git_prompt_info() {
