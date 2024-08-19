@@ -1,0 +1,29 @@
+# git in prompt
+git_prompt_info() {
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+
+    dynamic=""
+    dynamic+="%f("
+    dynamic+="%F{11}$(git symbolic-ref --short HEAD)%f"
+    
+    if [[ -n $(git diff --cached) ]]; then
+      dynamic+="%F{9}"
+      dynamic+="?"
+    fi
+
+    if [[ -n $(git diff) ]]; then
+      dynamic+="%F{9}"
+      dynamic+="!"
+    fi
+
+    if [[ -n $(git ls-files --others --exclude-standard) ]]; then
+      dynamic+="%F{8}"
+      dynamic+="."
+    fi
+
+    dynamic+="%f)"
+
+
+    echo -n "$dynamic"
+  fi
+}

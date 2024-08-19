@@ -1,11 +1,22 @@
+export GPG_TTY=$(tty)
+
+fpath+=("$HOME/.config/zsh/functions")
+autoload git_prompt_info
+
+precmd() {
+  export PROMPT="%F{12}%1~$(git_prompt_info) %f%(!.#.$)%f "
+}
+
 alias vim=nvim
 alias ls=eza
 alias ll='eza -la'
 alias ':q'='exit'
-
 alias public-ip='dig +short myip.opendns.com @resolver1.opendns.com'
 
-export GPG_TTY=$(tty)
+if command -v eza &> /dev/null; then
+  alias ls=eza
+  alias ll='eza -la'
+fi
 
 # wsl
 if [ -s /proc/version ] && grep -qi microsoft /proc/version; then
@@ -24,36 +35,3 @@ if [ "$(uname)" = "Darwin" ]; then
   alias tid='nvim +$ ~/Documents/tid.klg +"set syntax=klog"'
 fi
 
-# git in prompt
-git_prompt_info() {
-  if git rev-parse --is-inside-work-tree &>/dev/null; then
-
-    dynamic=""
-    dynamic+="%f("
-    dynamic+="%F{11}$(git symbolic-ref --short HEAD)%f"
-    
-    if [[ -n $(git diff --cached) ]]; then
-      dynamic+="%F{9}"
-      dynamic+="?"
-    fi
-
-    if [[ -n $(git diff) ]]; then
-      dynamic+="%F{9}"
-      dynamic+="!"
-    fi
-
-    if [[ -n $(git ls-files --others --exclude-standard) ]]; then
-      dynamic+="%F{8}"
-      dynamic+="."
-    fi
-
-    dynamic+="%f)"
-
-
-    echo -n "$dynamic"
-  fi
-}
-
-precmd() {
-  export PROMPT="%F{12}%1~$(git_prompt_info) %f%(!.#.$)%f "
-}
