@@ -1,9 +1,16 @@
 # paths
 declare -A paths
+paths[local]="$HOME/.local/bin"
 paths[brew]="/opt/homebrew/bin/brew"
 paths[jetbrains]="$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 paths[bun]="$HOME/.bun"
 paths[iterm2]="$HOME/.iterm2_shell_integration.zsh"
+
+# local
+if [ -d "${paths[local]}" ]; then
+  # placing local bin first, as I want those to take precedence
+  export PATH="${paths[local]}:$PATH"
+fi
 
 # brew
 if [ -x "${paths[brew]}" ]; then
