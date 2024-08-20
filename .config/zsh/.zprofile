@@ -3,3 +3,5 @@ if [ -x "$(command -v nvim)" ]; then
 elif [ -x "$(command -v vim)" ]; then
   export EDITOR=vim
 fi
+
+export KLOG_CONFIG_HOME=$HOME/.config/klog
