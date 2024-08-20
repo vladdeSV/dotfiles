@@ -57,7 +57,7 @@ autocmd FileType markdown,klog setlocal complete+=kspell
 
 " klog
 au BufRead,BufNewFile *.klg set filetype=klog
-command! Kdate execute "normal a" . strftime("%Y-%m-%d") . " (8h!)"
+command! Kdate execute "normal! o" . strftime("%Y-%m-%d") . " (8h!)" . "\n\t08:00 - ? "
 autocmd BufWritePre *.klg if getline('$') !=# '' | call append('$', '') | endif
 
 lua require('init')
