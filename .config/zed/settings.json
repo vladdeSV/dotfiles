@@ -5,6 +5,9 @@
   "use_auto_surround": false,
   "remove_trailing_whitespace_on_save": true,
   "extend_comment_on_newline": false,
+  "project_panel": {
+    "dock": "right"
+  },
   "theme": {
     "mode": "system",
     "light": "Ayu Light",
