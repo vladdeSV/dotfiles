@@ -1,5 +1,5 @@
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+export LC_ALL=sv_SE.UTF-8
+export LC_MESSAGES=en_US.UTF-8
 
 # paths
 declare -A paths
