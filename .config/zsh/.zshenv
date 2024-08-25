@@ -1,3 +1,6 @@
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # paths
 declare -A paths
 paths[local]="$HOME/.local/bin"
