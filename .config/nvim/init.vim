@@ -50,6 +50,9 @@ map q <Nop> " ignore just a q press. h*ck i dislike this command...
 nnoremap <C-c> "+y
 vnoremap <C-c> "+y
 
+nnoremap <C-b> :NvimTreeToggle<Enter>
+vnoremap <C-b> :NvimTreeToggle<Enter>
+
 language en_us
 set spelllang=en_us,sv
 autocmd FileType markdown,klog setlocal spell
