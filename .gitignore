@@ -5,6 +5,7 @@
 /.config/iterm2
 /.config/klog/bookmarks.json
 /.config/nvim/lazy-lock.json
+/.config/nvim/spell
 /.config/simple-update-notifier
 /.config/zed/**/*.mdb
 /.config/zed/.tmp*
