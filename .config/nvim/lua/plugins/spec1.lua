@@ -10,6 +10,7 @@ return {
   },
 
   'tpope/vim-fugitive',
+  'tpope/vim-commentary',
   'junegunn/gv.vim',
   'terroo/vim-simple-emoji'
 }
