@@ -26,8 +26,7 @@ map q <Nop>
 autocmd FileType * set formatoptions-=ro
 
 " binds
-" map ctrl+c to yank to clipboard
-vnoremap <C-c> "+y
+"" yank to clipboard
 vnoremap <leader>c "+y
 noremap <leader>b :NvimTreeToggle<Enter>
 noremap <leader>t :call ToggleBackground()<CR>
