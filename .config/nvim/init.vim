@@ -1,6 +1,47 @@
-set notermguicolors 
-"colorscheme vim
+language en_us
+let mapleader = ","
+set notermguicolors
+" colorscheme vim
 
+" editor general
+set tabstop=8
+set softtabstop=2
+set shiftwidth=2
+set textwidth=0
+set expandtab
+set number
+set numberwidth=4
+set scrolloff=3
+set nowrap
+set smartcase
+set linebreak
+set laststatus=2
+set statusline=%f%=(%l,%c)
+set spelllang=en_us
+autocmd FileType markdown setlocal spell
+autocmd FileType markdown setlocal complete+=kspell
+" ignore just a q press. h*ck i dislike this command...
+map q <Nop>
+" disable "comment continuation" (gets overridden on load, have to resort to this)
+autocmd FileType * set formatoptions-=ro
+
+" binds
+" map ctrl+c to yank to clipboard
+vnoremap <C-c> "+y
+vnoremap <leader>c "+y
+noremap <leader>b :NvimTreeToggle<Enter>
+noremap <leader>t :call ToggleBackground()<CR>
+
+" klog
+autocmd BufRead,BufNewFile *.klg set filetype=klog
+autocmd BufWritePre *.klg if getline('$') !=# '' | call append('$', '') | endif
+command! Kdate execute "normal! o" . strftime("%Y-%m-%d") . " (8h!)" . "\n\t08:00 - ? "
+
+" lua
+lua require('init')
+
+" makeshift vim colorscheme
+autocmd OptionSet background call SetHighlights()
 function! SetHighlights()
   if &background == "dark"
     hi LineNr ctermfg=7
@@ -27,41 +68,10 @@ function! SetHighlights()
   endif
 endfunction
 
-autocmd OptionSet background call SetHighlights()
-
-" editor general
-set tabstop=8
-set softtabstop=2
-set shiftwidth=2
-set expandtab
-set number
-set numberwidth=4
-set scrolloff=3
-set nowrap
-set smartcase
-set linebreak
-set spelllang=en_us
-set laststatus=2
-set statusline=%f%=(%l,%c)
-map q <Nop> " ignore just a q press. h*ck i dislike this command...
-
-" map Ctrl+C to yank to clipboard
-" (can't figure out how to do ⌘+C on iTerm2 (also this is more cross-platform since my non-mac machines don't have ⌘))
-nnoremap <C-c> "+y
-vnoremap <C-c> "+y
-
-nnoremap <C-b> :NvimTreeToggle<Enter>
-vnoremap <C-b> :NvimTreeToggle<Enter>
-
-language en_us
-set spelllang=en_us,sv
-autocmd FileType markdown,klog setlocal spell
-autocmd FileType markdown,klog setlocal complete+=kspell
-
-" klog
-au BufRead,BufNewFile *.klg set filetype=klog
-command! Kdate execute "normal! o" . strftime("%Y-%m-%d") . " (8h!)" . "\n\t08:00 - ? "
-autocmd BufWritePre *.klg if getline('$') !=# '' | call append('$', '') | endif
-
-lua require('init')
-
+function! ToggleBackground()
+  if &background == 'dark'
+    set background=light
+  else
+    set background=dark
+  endif
+endfunction
