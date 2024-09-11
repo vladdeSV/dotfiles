@@ -35,4 +35,3 @@ if [ "$(uname)" = "Darwin" ]; then
   # easy klog edit
   alias tid='nvim +$ ~/Documents/tid.klg +"set syntax=klog"'
 fi
-
