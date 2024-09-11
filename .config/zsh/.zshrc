@@ -10,7 +10,7 @@ precmd() {
 alias vim=nvim
 alias ls=eza
 alias ll='eza -la'
-alias ':q'='exit'
+alias ':q'='echo "deprecated: use ^D instead"'
 alias public-ip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias tmp='cd ~/.local/tmp && pwd'
 
