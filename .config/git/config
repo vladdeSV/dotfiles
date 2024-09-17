@@ -19,6 +19,9 @@
 [pull]
   rebase = false
 
+[merge]
+  conflictstyle = diff3
+
 [alias]
   co = checkout
   br = branch
