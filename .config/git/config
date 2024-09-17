@@ -29,7 +29,7 @@
   cm = commit
   
   unstage = reset HEAD --
-  tree = log --graph --all
+  tree = log --graph --all --oneline
   filehist = log -p -M --follow --stat --
   diffs = diff --staged
 
