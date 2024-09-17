@@ -28,16 +28,12 @@ autocmd FileType * set formatoptions-=ro
 " binds
 "" yank to clipboard
 vnoremap <leader>c "+y
-noremap <leader>b :NvimTreeToggle<Enter>
 noremap <leader>t :call ToggleBackground()<CR>
 
 " klog
 autocmd BufRead,BufNewFile *.klg set filetype=klog
 autocmd BufWritePre *.klg if getline('$') !=# '' | call append('$', '') | endif
 command! Kdate execute "normal! o" . strftime("%Y-%m-%d") . " (8h!)" . "\n\t08:00 - ? "
-
-" lua
-lua require('init')
 
 " makeshift vim colorscheme
 autocmd OptionSet background call SetHighlights()
