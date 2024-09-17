@@ -15,6 +15,7 @@ alias tmp='cd ~/.local/tmp && pwd'
 if command -v eza &> /dev/null; then
   alias ls=eza
   alias ll='eza -la'
+  alias tree="eza --tree"
 fi
 
 # wsl
