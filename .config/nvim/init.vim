@@ -25,8 +25,7 @@ map q <Nop>
 " disable "comment continuation" (gets overridden on load, have to resort to this)
 autocmd FileType * set formatoptions-=ro
 
-" binds
-"" yank to clipboard
+" yank to clipboard
 vnoremap <leader>c "+y
 noremap <leader>t :call ToggleBackground()<CR>
 
