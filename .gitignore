@@ -6,6 +6,7 @@
 /.config/klog/bookmarks.json
 /.config/nvim/lazy-lock.json
 /.config/nvim/spell
+/.config/nvim/bundle
 /.config/qBittorrent
 /.config/simple-update-notifier
 /.config/zed/**/*.mdb

@@ -1,3 +1,5 @@
+source ~/.config/nvim/vundle_plugins.vim
+
 language en_us
 let mapleader = ","
 set notermguicolors
