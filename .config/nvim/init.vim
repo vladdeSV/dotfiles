@@ -3,7 +3,6 @@ source ~/.config/nvim/vundle_plugins.vim
 language en_us
 let mapleader = ","
 set notermguicolors
-" colorscheme vim
 
 " editor general
 set tabstop=8
@@ -26,6 +25,8 @@ autocmd FileType markdown setlocal complete+=kspell
 map q <Nop>
 " disable "comment continuation" (gets overridden on load, have to resort to this)
 autocmd FileType * set formatoptions-=ro
+" thank you @saccarosium for this workaround
+autocmd ColorSchemePre * call s:check_background()
 
 " yank to clipboard
 vnoremap <leader>c "+y
@@ -36,38 +37,14 @@ autocmd BufRead,BufNewFile *.klg set filetype=klog
 autocmd BufWritePre *.klg if getline('$') !=# '' | call append('$', '') | endif
 command! Kdate execute "normal! o" . strftime("%Y-%m-%d") . " (8h!)" . "\n\t08:00 - ? "
 
-" makeshift vim colorscheme
-autocmd OptionSet background call SetHighlights()
-function! SetHighlights()
-  if &background == "dark"
-    hi LineNr ctermfg=7
-    hi Visual ctermfg=15 ctermbg=8
-    hi Statement ctermfg=11 cterm=NONE
-    hi Type ctermfg=121 cterm=NONE
-    hi PreProc ctermfg=81
-    hi Constant ctermfg=13
-    hi Comment ctermfg=14
-    hi String ctermfg=13
-    hi Identifier ctermfg=14 cterm=bold
-    hi ModeMsg ctermfg=NONE cterm=bold
-  elseif &background == "light"
-    hi LineNr ctermfg=7
-    hi Visual ctermfg=0 ctermbg=7
-    hi Statement ctermfg=130 cterm=NONE
-    hi Type ctermfg=2 cterm=NONE
-    hi PreProc ctermfg=5
-    hi Constant ctermfg=1
-    hi Comment ctermfg=4
-    hi String ctermfg=1
-    hi Identifier ctermfg=6 cterm=NONE
-    hi ModeMsg ctermfg=NONE cterm=bold
+function s:check_background()
+  " echo "run"
+  let macos_theme = system("defaults read -g AppleInterfaceStyle 2>/dev/null")
+  if macos_theme ==# ''
+    set background=light
+  else
+  "   set background=dark
   endif
 endfunction
 
-function! ToggleBackground()
-  if &background == 'dark'
-    set background=light
-  else
-    set background=dark
-  endif
-endfunction
+colorscheme vim
