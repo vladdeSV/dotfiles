@@ -1,2 +1,7 @@
 theme = Nosaturn
+title = "this is my terminal"
 bold-is-bright = true
+background-opacity = 0.9
+background-blur-radius = 10
+keybind = global:cmd+ö=toggle_quick_terminal
+keybind = global:unconsumed:ctrl+a=reload_config
