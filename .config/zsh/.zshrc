@@ -7,7 +7,6 @@ precmd() {
   export PROMPT="%F{12}%1~$(git_prompt_info) %f%(!.#.$)%f "
 }
 
-alias vim=nvim
 alias ':q'='echo "deprecated: use ^D instead"'
 alias public-ip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias tmp='cd ~/.local/tmp && pwd'
@@ -32,7 +31,7 @@ if [ "$(uname)" = "Darwin" ]; then
   alias year="date +%Y"
 
   # easy klog edit
-  alias tid='nvim +$ ~/Documents/tid.klg +"set syntax=klog"'
+  alias tid='vim +$ ~/Documents/tid.klg'
 fi
 
 # ghostty workaround, to fix errors like "missing or unsuitable terminal: xterm-ghostty"

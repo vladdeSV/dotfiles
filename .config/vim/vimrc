@@ -1,0 +1,37 @@
+language en_us
+syntax on
+set nocompatible
+set encoding=utf-8
+
+let mapleader = ","
+
+" editor general
+set mouse=a
+set tabstop=8
+set softtabstop=2
+set shiftwidth=2
+set textwidth=0
+set expandtab
+set number
+set numberwidth=4
+set scrolloff=3
+set nowrap
+set smartcase
+set linebreak
+set laststatus=2
+set statusline=%f%=(%l,%c)
+set spelllang=en_us
+autocmd FileType markdown setlocal spell
+autocmd FileType markdown setlocal complete+=kspell
+" disable "comment continuation" (gets overridden on load, have to resort to this)
+autocmd FileType * set formatoptions-=ro
+
+" ignore just a q press. h*ck i dislike this command...
+map q <Nop>
+" yank to clipboard
+vnoremap <leader>c "+y
+
+" klog
+autocmd BufRead,BufNewFile *.klg set filetype=klog
+autocmd BufWritePre *.klg if getline('$') !=# '' | call append('$', '') | endif
+command! Kdate execute "normal! o" . strftime("%Y-%m-%d") . " (8h!)" . "\n\t08:00 - ? "
