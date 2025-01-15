@@ -18,7 +18,6 @@ if command -v eza &> /dev/null; then
 fi
 
 # um... make ^R work again?
-bindkey -v
 bindkey '^R' history-incremental-search-backward
 
 # wsl
