@@ -17,6 +17,10 @@ if command -v eza &> /dev/null; then
   alias tree="eza --tree"
 fi
 
+# um... make ^R work again?
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+
 # wsl
 if [ -s /proc/version ] && grep -qi microsoft /proc/version; then
   alias open=explorer.exe
@@ -38,3 +42,4 @@ fi
 if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
     export TERM=xterm-256color
 fi
+
