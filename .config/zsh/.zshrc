@@ -11,6 +11,7 @@ alias ':q'='echo "deprecated: use ^D instead"'
 alias public-ip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias tmp='cd ~/.local/tmp && pwd'
 
+# if eza is installed
 if command -v eza &> /dev/null; then
   alias ls=eza
   alias ll='eza -la'
