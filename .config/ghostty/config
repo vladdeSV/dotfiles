@@ -1,4 +1,4 @@
-theme = Nosaturn
+theme = dark:Nosaturn,light:Nosaturn Light
 title = " "
 bold-is-bright = true
 background-opacity = 0.9
