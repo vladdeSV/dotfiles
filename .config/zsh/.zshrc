@@ -27,7 +27,7 @@ fi
 
 # macOS
 if [ "$(uname)" = "Darwin" ]; then
-  alias finder 'open -a Finder .'
+  alias finder 'open -a Finder'
   alias local-ip="ifconfig en0 | grep 'inet ' | cut -d' ' -f2 | sed 's/addr://' "
   alias day="date +%A"
   alias week="date +%V"
