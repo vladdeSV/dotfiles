@@ -17,14 +17,16 @@ set numberwidth=4
 set scrolloff=3
 set nowrap
 set smartcase
+set hlsearch
+set incsearch
 set linebreak
 set laststatus=2
 set statusline=%f%=(%l,%c)
 set spelllang=en_us
+set whichwrap=bs<>hl[]
 autocmd FileType markdown setlocal spell
 autocmd FileType markdown setlocal complete+=kspell
-" disable "comment continuation" (gets overridden on load, have to resort to this)
-autocmd FileType * set formatoptions-=ro
+hi LineNr ctermfg=7
 
 " ignore just a q press. h*ck i dislike this command...
 map q <Nop>
