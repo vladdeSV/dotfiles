@@ -1,5 +1,6 @@
 language en_us
 syntax on
+filetype plugin indent on
 set nocompatible
 set encoding=utf-8
 
@@ -24,6 +25,7 @@ set laststatus=2
 set statusline=%f%=(%l,%c)
 set spelllang=en_us
 set whichwrap=bs<>hl[]
+set autoindent
 autocmd FileType markdown setlocal spell
 autocmd FileType markdown setlocal complete+=kspell
 hi LineNr ctermfg=7
