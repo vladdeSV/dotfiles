@@ -9,6 +9,7 @@
 /.config/nvim/bundle
 /.config/qBittorrent
 /.config/simple-update-notifier
+/.config/vim/.netrwhist
 /.config/vim/autoload/plug.vim
 /.config/vim/plugged
 /.config/zed/**/*.mdb
