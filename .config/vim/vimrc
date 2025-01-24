@@ -39,3 +39,15 @@ vnoremap <leader>c "+y
 autocmd BufRead,BufNewFile *.klg set filetype=klog
 autocmd BufWritePre *.klg if getline('$') !=# '' | call append('$', '') | endif
 command! Kdate execute "normal! o" . strftime("%Y-%m-%d") . " (8h!)" . "\n\t08:00 - ? "
+
+
+" plugin
+call plug#begin()
+
+Plug 'tpope/vim-sensible'
+Plug 'ntpeters/vim-better-whitespace'
+
+call plug#end()
+
+" dim highlight of trailing whitespace
+highlight ExtraWhitespace ctermbg=7
