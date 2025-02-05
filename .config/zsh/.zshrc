@@ -37,7 +37,7 @@ if [ "$(uname)" = "Darwin" ]; then
   alias year="date +%Y"
 
   # easy klog edit
-  alias tid='vim +$ ~/Documents/tid.klg'
+  alias tid='vim + ~/Documents/tid.klg'
 fi
 
 # ghostty workaround, to fix errors like "missing or unsuitable terminal: xterm-ghostty"
