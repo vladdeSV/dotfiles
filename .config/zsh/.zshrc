@@ -20,6 +20,8 @@ fi
 
 # um... make ^R work again?
 bindkey '^R' history-incremental-search-backward
+# allow inline comments (with #)
+setopt interactivecomments
 
 # wsl
 if [ -s /proc/version ] && grep -qi microsoft /proc/version; then
