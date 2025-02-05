@@ -26,6 +26,8 @@ set statusline=%f%=(%l,%c)
 set spelllang=en_us
 set whichwrap=bs<>hl[]
 set autoindent
+" disable "comment continuation" (gets overridden on load, have to resort to this)
+autocmd FileType * set formatoptions-=ro
 autocmd FileType markdown setlocal spell
 autocmd FileType markdown setlocal complete+=kspell
 hi LineNr ctermfg=7
