@@ -48,6 +48,7 @@ call plug#begin()
 
 Plug 'tpope/vim-sensible'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'mhinz/vim-signify'
 
 call plug#end()
 
