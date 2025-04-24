@@ -27,13 +27,13 @@
   br = branch
   st = status -sb
   cm = commit
-  
   tree = log --graph --all --oneline
   filehist = log -p -M --follow --stat --
   diffs = diff --staged
 
 [rerere]
   enabled = true
+
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
