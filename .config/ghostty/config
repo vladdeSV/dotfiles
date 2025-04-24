@@ -1,7 +1,8 @@
 theme = dark:Nosaturn,light:Nosaturn Light
+window-colorspace=display-p3
 title = " "
 bold-is-bright = true
 background-opacity = 0.9
 background-blur-radius = 10
 keybind = global:cmd+ö=toggle_quick_terminal
-keybind = global:unconsumed:ctrl+a=reload_config
+keybind = global:unconsumed:ctrl+b=reload_config
