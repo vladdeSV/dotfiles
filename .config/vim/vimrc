@@ -54,3 +54,7 @@ call plug#end()
 
 " dim highlight of trailing whitespace
 highlight ExtraWhitespace ctermbg=7
+
+" diff
+highlight SignColumn ctermbg=none
+set updatetime=100
