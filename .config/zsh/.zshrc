@@ -31,7 +31,8 @@ fi
 # macOS
 if [ "$(uname)" = "Darwin" ]; then
   alias finder 'open -a Finder'
-  alias local-ip="ifconfig en0 | grep 'inet ' | cut -d' ' -f2 | sed 's/addr://' "
+  alias ipl="ipconfig getifaddr en0"
+  alias ipp="dig +short myip.opendns.com @resolver1.opendns.com"
   alias day="date +%A"
   alias week="date +%V"
   alias year="date +%Y"
