@@ -13,7 +13,7 @@
   defaultBranch = main
 
 [core]
-  editor = nvim
+  editor = vim
   autocrlf = false
 
 [pull]
