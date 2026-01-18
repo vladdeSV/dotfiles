@@ -1,4 +1,4 @@
-language en_us
+language en_US.UTF-8
 syntax on
 filetype plugin indent on
 set nocompatible
