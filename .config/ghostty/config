@@ -1,8 +1,16 @@
-theme = dark:Nosaturn,light:Nosaturn Light
-window-colorspace=display-p3
-title = " "
-bold-is-bright = true
-background-opacity = 0.9
-background-blur-radius = 10
-keybind = global:cmd+ö=toggle_quick_terminal
-keybind = global:unconsumed:ctrl+b=reload_config
+theme = dark:GitHub Dark Colorblind,light:GitHub Light Colorblind
+
+font-family = JetBrains Mono
+adjust-cell-height = -10%
+
+background-blur = true
+cursor-color = cell-foreground
+
+selection-clear-on-copy = true
+
+keybind = unconsumed:ctrl+.=reload_config
+keybind = alt+c=copy_to_clipboard
+keybind = alt+v=paste_from_clipboard
+keybind = alt+t=new_tab
+keybind = alt+d=new_split
+keybind = alt+w=close_surface
