@@ -1,5 +1,5 @@
 {
-  "vim_mode": true,
+  "vim_mode": false,
   "tab_size": 2,
   "format_on_save": "on",
   "use_autoclose": false,
