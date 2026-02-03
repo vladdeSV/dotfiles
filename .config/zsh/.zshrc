@@ -13,9 +13,13 @@ alias public-ip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias tmp="cd '$HOME/.local/tmp' && pwd"
 alias dush='setopt local_options null_glob; du -sh * .* | sort -h'
 alias dc="dc '$HOME/.config/dc/dcrc' -"
+alias copy='wl-copy'
+alias bat='bat --plain'
+alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
 # if eza is installed
-if command -v eza &> /dev/null; then
+if command -v eza > /dev/null 2>&1; then
   alias ls=eza
   alias ll='eza -la'
   alias tree="eza --tree"
