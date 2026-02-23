@@ -24,6 +24,7 @@ set linebreak
 set laststatus=2
 set statusline=%f%=(%l,%c)
 set spelllang=en_us
+set spellcapcheck= " disable capitalization
 set whichwrap=bs<>hl[]
 set autoindent
 " disable "comment continuation" (gets overridden on load, have to resort to this)
