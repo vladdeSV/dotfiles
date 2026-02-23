@@ -39,7 +39,7 @@ fi
 
 # macOS
 if [ "$(uname)" = "Darwin" ]; then
-  alias finder 'open -a Finder'
+  alias finder='open -a Finder'
   alias ipl="ipconfig getifaddr en0"
   alias ipp="dig +short myip.opendns.com @resolver1.opendns.com"
   alias day="date +%A"
@@ -51,7 +51,7 @@ if [ "$(uname)" = "Darwin" ]; then
 fi
 
 # ghostty workaround, to fix errors like "missing or unsuitable terminal: xterm-ghostty"
-if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+if [ "$TERM_PROGRAM" = "ghostty" ]; then
     export TERM=xterm-256color
 fi
 
