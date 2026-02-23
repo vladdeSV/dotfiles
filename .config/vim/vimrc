@@ -49,7 +49,7 @@ let g:netrw_altv=1 " opens on right side
 let g:netrw_winsize=25 " panel width
 
 " plugin
-call plug#begin()
+call plug#begin("$HOME/.config/vim/plugged")
 
 Plug 'tpope/vim-sensible'
 Plug 'ntpeters/vim-better-whitespace'
