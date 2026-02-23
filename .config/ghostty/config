@@ -3,6 +3,7 @@ theme = dark:GitHub Dark Colorblind,light:GitHub Light Colorblind
 font-family = JetBrains Mono
 adjust-cell-height = -10%
 
+background-opacity = 0.95
 background-blur = true
 cursor-color = cell-foreground
 
