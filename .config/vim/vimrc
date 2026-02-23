@@ -41,6 +41,13 @@ vnoremap <leader>c "+y
 nnoremap <expr> <Down> v:count ? 'j' : 'gj'
 nnoremap <expr> <Up> v:count ? 'k' : 'gk'
 
+" netrw (based on https://stackoverflow.com/q/53538591)
+let g:netrw_banner=0 " removes top banner
+let g:netrw_liststyle=3 " tree-styled
+let g:netrw_browse_split=4 " open file in last tab (do not replace browser)
+let g:netrw_altv=1 " opens on right side
+let g:netrw_winsize=25 " panel width
+
 " plugin
 call plug#begin()
 
@@ -56,3 +63,4 @@ highlight ExtraWhitespace ctermbg=7
 " diff
 highlight SignColumn ctermbg=none
 set updatetime=100
+
