@@ -37,6 +37,9 @@ hi LineNr ctermfg=7
 map q <Nop>
 " yank to clipboard
 vnoremap <leader>c "+y
+" move through softlines (based on https://stackoverflow.com/a/21000307)
+nnoremap <expr> <Down> v:count ? 'j' : 'gj'
+nnoremap <expr> <Up> v:count ? 'k' : 'gk'
 
 " plugin
 call plug#begin()
