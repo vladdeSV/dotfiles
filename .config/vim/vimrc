@@ -22,7 +22,7 @@ set hlsearch
 set incsearch
 set linebreak
 set laststatus=2
-set statusline=%f%=(%l,%c)
+set statusline=%f%m\ %y%=%l/%L,%c " (based on https://nkantar.com/blog/2017/01/my-vim-statusline/)
 set spelllang=en_us
 set spellcapcheck= " disable capitalization
 set whichwrap=bs<>hl[]
@@ -51,9 +51,9 @@ let g:netrw_winsize=25 " panel width
 " plugin
 call plug#begin("$HOME/.config/vim/plugged")
 
-Plug 'tpope/vim-sensible'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-sensible' " insane default
+Plug 'ntpeters/vim-better-whitespace' " ws
+Plug 'mhinz/vim-signify' " git diff inline
 
 call plug#end()
 
