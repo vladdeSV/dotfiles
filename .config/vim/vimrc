@@ -60,9 +60,9 @@ Plug 'mhinz/vim-signify' " git diff inline
 call plug#end()
 
 " dim highlight of trailing whitespace
-highlight ExtraWhitespace ctermbg=7
+hi ExtraWhitespace ctermbg=7
 
 " diff
-highlight SignColumn ctermbg=none
+hi SignColumn ctermbg=none
 set updatetime=100
 
