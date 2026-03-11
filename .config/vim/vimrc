@@ -55,7 +55,7 @@ call plug#begin("$HOME/.config/vim/plugged")
 
 Plug 'tpope/vim-sensible' " insane default
 Plug 'ntpeters/vim-better-whitespace' " ws
-Plug 'mhinz/vim-signify' " git diff inline
+Plug 'airblade/vim-gitgutter' " git inline
 
 call plug#end()
 
