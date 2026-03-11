@@ -1,3 +1,4 @@
+*.swp
 .DS_Store
 /.config/composer
 /.config/gh/hosts.yml
