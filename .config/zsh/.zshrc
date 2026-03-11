@@ -56,8 +56,3 @@ if [ "$(uname)" = "Darwin" ]; then
   alias tid='vim + ~/Documents/tid.klg'
 fi
 
-# ghostty workaround, to fix errors like "missing or unsuitable terminal: xterm-ghostty"
-if [ "$TERM_PROGRAM" = "ghostty" ]; then
-    export TERM=xterm-256color
-fi
-

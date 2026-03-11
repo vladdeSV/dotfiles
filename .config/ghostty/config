@@ -8,6 +8,7 @@ background-blur = true
 cursor-color = cell-foreground
 
 selection-clear-on-copy = true
+shell-integration-features = ssh-terminfo,ssh-env
 
 keybind = unconsumed:ctrl+.=reload_config
 keybind = alt+c=copy_to_clipboard
