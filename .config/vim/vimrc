@@ -27,11 +27,13 @@ set spelllang=en_us
 set spellcapcheck= " disable capitalization
 set whichwrap=bs<>hl[]
 set autoindent
+set fillchars+=vert:│
 " disable "comment continuation" (gets overridden on load, have to resort to this)
 autocmd FileType * set formatoptions-=ro
 autocmd FileType markdown setlocal spell
 autocmd FileType markdown setlocal complete+=kspell
 hi LineNr ctermfg=7
+hi VertSplit cterm=none ctermfg=0
 
 " ignore just a q press. h*ck i dislike this command...
 map q <Nop>
