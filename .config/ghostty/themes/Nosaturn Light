@@ -5,7 +5,7 @@ palette = 3=#8E6D39
 palette = 4=#525DB6
 palette = 5=#685491
 palette = 6=#317182
-palette = 7=#9E947C
+palette = 7=#8F8670
 palette = 8=#6C685F
 palette = 9=#D8593B
 palette = 10=#86A347
@@ -13,7 +13,7 @@ palette = 11=#C3AB66
 palette = 12=#5885D8
 palette = 13=#AB5BF7
 palette = 14=#6EA6C3
-palette = 15=#CEC8B8
+palette = 15=#BDB6A4
 background = FAF6F0
 foreground = 563C21
 cursor-color = 563C21
