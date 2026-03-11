@@ -33,8 +33,13 @@ if command -v eza > /dev/null 2>&1; then
   alias tree="eza --tree"
 fi
 
-# um... make ^R work again?
-bindkey '^R' history-incremental-search-backward
+if command -v fzf > /dev/null 2>&1; then
+  source <(fzf --zsh)
+  bindkey '^R' fzf-history-widget
+else
+  bindkey '^R' history-incremental-search-backward
+fi
+
 # allow inline comments (with #)
 setopt interactivecomments
 
