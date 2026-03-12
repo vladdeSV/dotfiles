@@ -5,7 +5,7 @@ fpath+=("$HOME/.config/zsh/functions")
 autoload git_prompt_info
 
 precmd() {
-  export PROMPT="%F{12}%1~$(git_prompt_info) %f%(!.#.$)%f "
+  export PROMPT="%F{12}%1~$(git_prompt_info) %f%(1j.%F{13}* %f.)%(!.#.$)%f "
 }
 
 alias ':q'='echo "deprecated: use ^D instead"'
