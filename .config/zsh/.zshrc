@@ -1,5 +1,4 @@
 export GPG_TTY=$(tty)
-export DC_PROMPT="> "
 
 fpath+=("$HOME/.config/zsh/functions")
 autoload git_prompt_info
@@ -11,7 +10,7 @@ precmd() {
 alias ':q'='echo "deprecated: use ^D instead"'
 alias public-ip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias dush='setopt local_options null_glob; du -sh * .* | sort -h'
-alias dc="dc '$HOME/.config/dc/dcrc' -"
+alias dc="DC_PROMPT='> ' dc '$HOME/.config/dc/dcrc' -"
 alias vimrc="$EDITOR $HOME/.config/vim/vimrc"
 alias pbcopy='wl-copy'   # mac-alike alias
 alias pbpaste='wl-paste'
