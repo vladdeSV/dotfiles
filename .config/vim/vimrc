@@ -17,6 +17,8 @@ set number
 set numberwidth=4
 set scrolloff=3
 set nowrap
+set splitbelow
+set splitright
 set smartcase
 set hlsearch
 set incsearch
