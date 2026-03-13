@@ -22,7 +22,7 @@ alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
 tmp() {
   local dir
-  dir=$(mktemp -d ${1:+"${1}.XXXXXXXXXX"}) || return 1
+  dir=$(mktemp -d ${1:+"/tmp/${1}.XXXXXXXXXX"}) || return 1
   echo "$dir"
   cd "$dir"
 }
