@@ -29,7 +29,7 @@ tmp() {
 
 # if eza is installed
 if command -v eza > /dev/null 2>&1; then
-  alias ls=eza
+  alias ls='eza -a'
   alias ll='eza -la'
   alias tree="eza --tree"
 fi
