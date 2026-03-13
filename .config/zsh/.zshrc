@@ -12,6 +12,7 @@ alias public-ip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias dush='setopt local_options null_glob; du -sh * .* | sort -h'
 alias dc="DC_PROMPT='> ' dc '$HOME/.config/dc/dcrc' -"
 alias vimrc="$EDITOR $HOME/.config/vim/vimrc"
+alias zshrc="$EDITOR $HOME/.config/zsh/.zshrc"
 alias pbcopy='wl-copy'   # mac-alike alias
 alias pbpaste='wl-paste'
 alias bat='bat --plain'
