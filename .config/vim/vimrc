@@ -67,8 +67,6 @@ hi SignColumn ctermbg=none
 set updatetime=100
 
 " neeeeeerdtree
-let g:loaded_netrwPlugin = 1 " disable netrw in favor of NERDtree. i find netrw unstable to work with.
-
 hi Directory ctermfg=12
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinPos = 'right'
@@ -76,3 +74,4 @@ let g:NERDTreeWinSize = 40
 nnoremap <leader>ef :NERDTreeFocus<CR>
 nnoremap <leader>ee :NERDTreeToggle<CR>
 nnoremap <leader>ed :NERDTreeFind<CR>
+let g:loaded_netrwPlugin = 1 " disable netrw in favor of NERDtree. i find netrw unstable to work with.
