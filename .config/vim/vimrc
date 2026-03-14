@@ -61,6 +61,7 @@ call plug#begin("$HOME/.config/vim/plugged")
 Plug 'tpope/vim-sensible' " insane default
 Plug 'ntpeters/vim-better-whitespace' " ws
 Plug 'airblade/vim-gitgutter' " git inline
+Plug 'yegappan/lsp' " for language servers
 Plug 'phelipetls/vim-hugo' " for hugo page
 Plug 'terryma/vim-expand-region' " expands
 Plug 'junegunn/vim-peekaboo' " in register
