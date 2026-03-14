@@ -16,3 +16,4 @@ keybind = alt+v=paste_from_clipboard
 keybind = alt+t=new_tab
 keybind = alt+d=new_split
 keybind = alt+w=close_surface
+keybind = alt+f=start_search
