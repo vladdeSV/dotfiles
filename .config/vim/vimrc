@@ -46,24 +46,13 @@ vnoremap <leader>y "+y
 nnoremap <expr> <Down> v:count ? 'j' : 'gj'
 nnoremap <expr> <Up> v:count ? 'k' : 'gk'
 
-" netrw (based on https://stackoverflow.com/q/53538591)
-let g:netrw_banner=0 " removes top banner
-let g:netrw_liststyle=3 " tree-styled
-let g:netrw_browse_split=4 " open file in previous window
-let g:netrw_altv=1 " opens on right side
-let g:netrw_winsize=25 " panel width
-hi netrwDir ctermfg=4
-hi netrwTreeBar ctermfg=0
-hi netrwSymLink ctermfg=6
-hi netrwExe ctermfg=2
-nnoremap <leader>e :Lexplore!<CR>
-
 " plugin
 call plug#begin("$HOME/.config/vim/plugged")
 
 Plug 'tpope/vim-sensible' " insane default
 Plug 'ntpeters/vim-better-whitespace' " ws
 Plug 'airblade/vim-gitgutter' " git inline
+Plug 'preservim/nerdtree' " files explorer
 
 call plug#end()
 
@@ -74,3 +63,5 @@ hi ExtraWhitespace ctermbg=7
 hi SignColumn ctermbg=none
 set updatetime=100
 
+" neeeeeerdtree
+let g:loaded_netrwPlugin = 1 " disable netrw in favor of NERDtree. i find netrw unstable to work with.
