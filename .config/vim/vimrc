@@ -38,9 +38,11 @@ autocmd FileType markdown setlocal spell
 autocmd FileType markdown setlocal complete+=kspell
 hi LineNr ctermfg=7
 hi VertSplit cterm=none ctermfg=0
+" completion menu, to look a bit better imo
 hi Pmenu ctermfg=15 ctermbg=0
-hi PmenuMatch ctermfg=8 ctermbg=0
-hi PmenuSel cterm=none ctermfg=0 ctermbg=15
+hi PmenuMatch ctermfg=7 ctermbg=0
+hi PmenuSel ctermfg=0 ctermbg=15
+hi PmenuMatchSel ctermfg=8 ctermbg=15
 
 " ignore just a q press. h*ck i dislike this command...
 map q <Nop>
