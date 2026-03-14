@@ -30,12 +30,17 @@ set spellcapcheck= " disable capitalization
 set whichwrap=bs<>hl[]
 set autoindent
 set fillchars+=vert:│
+set completeopt=menuone,noinsert,popup
+set completepopup=border:off " ,highlight:PmenuSel
 " disable "comment continuation" (gets overridden on load, have to resort to this)
 autocmd FileType * set formatoptions-=ro
 autocmd FileType markdown setlocal spell
 autocmd FileType markdown setlocal complete+=kspell
 hi LineNr ctermfg=7
 hi VertSplit cterm=none ctermfg=0
+hi Pmenu ctermfg=15 ctermbg=0
+hi PmenuMatch ctermfg=8 ctermbg=0
+hi PmenuSel cterm=none ctermfg=0 ctermbg=15
 
 " ignore just a q press. h*ck i dislike this command...
 map q <Nop>
@@ -45,6 +50,8 @@ vnoremap <leader>y "+y
 " move through softlines (based on https://stackoverflow.com/a/21000307)
 nnoremap <expr> <Down> v:count ? 'j' : 'gj'
 nnoremap <expr> <Up> v:count ? 'k' : 'gk'
+" omnifunc
+inoremap <C-Space> <C-x><C-o>
 
 " plugin
 call plug#begin("$HOME/.config/vim/plugged")
