@@ -56,6 +56,7 @@ if command -v eza > /dev/null 2>&1; then
 fi
 
 if command -v fzf > /dev/null 2>&1; then
+  export FZF_DEFAULT_OPTS="--layout=reverse --border --color=border:8,prompt:15,current-bg:0,current-fg:-1,pointer:15,hl:8,current-hl:15,info:15"
   source <(fzf --zsh)
   bindkey '^R' fzf-history-widget
 else
