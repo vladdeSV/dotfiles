@@ -7,8 +7,22 @@ precmd() {
   export PROMPT="%F{12}%1~$(git_prompt_info) %f%(1j.%F{13}* %f.)%(!.#.$)%f "
 }
 
-# allow inline comments (with #)
-setopt interactivecomments
+setopt interactivecomments # allow inline comments (with #)
+setopt histignorespace # ignore commands with leading space
+
+# ^Z toggles between suspend and resume
+fg-bg() {
+  local suspended=${(M)#jobstates:#suspended:*}
+  if (( suspended )); then
+    zle push-input
+    zle -I
+    fg
+  else
+    zle suspend
+  fi
+}
+zle -N fg-bg
+bindkey '^Z' fg-bg
 
 # simple move back- and forewards
 bindkey '^[[1;5D' backward-word
