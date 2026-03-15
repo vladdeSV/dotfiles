@@ -32,6 +32,12 @@ call g:LspAddServer([
   \   path: 'vscode-css-language-server',
   \   args: ['--stdio'],
   \ },
+  \ #{
+  \   name: 'shell',
+  \   filetype: ['sh', 'bash'],
+  \   path: 'bash-language-server',
+  \   args: ['start'],
+  \ },
   \ ])
 
 autocmd User LspAttached {
