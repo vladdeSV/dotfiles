@@ -16,7 +16,7 @@ set expandtab
 set number
 set numberwidth=4
 set scrolloff=3
-set nowrap
+set wrap
 set splitbelow
 set splitright
 set smartcase
