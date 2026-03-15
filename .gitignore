@@ -1,8 +1,7 @@
 *.swp
 .DS_Store
 /.config/composer
-/.config/gh/hosts.yml
-/.config/github-copilot
+/.config/git/ignore
 /.config/iterm2
 /.config/klog/bookmarks.json
 /.config/qBittorrent
