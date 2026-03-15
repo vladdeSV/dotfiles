@@ -1,0 +1,273 @@
+set $mod Mod4
+set $term ghostty
+set $menu wmenu-run -i -N 222222 -S 5b4d9f -Mff0000 -f "JetBrains Mono 11"
+
+set $swaypath '$HOME/.config/sway'
+set $bgimage "$HOME/Pictures/bg.png"
+set $lockimage "$HOME/Pictures/bg-lock.png"
+
+# swaymsg -t get_outputs
+set $monitor_top 'HDMI-A-3'
+set $monitor_bottom 'DP-3'
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+# class border background text indicator child_border
+client.focused          #8c86ac #5b4d9f #ffffff #9381ed #5b4d9f
+client.focused_inactive #b7b0d9 #8c86ac #ffffff #a398de #6e688e
+client.urgent           #8c4a6e #9f2b4d #ffffff #ed4a6e #9f2b4d
+
+output $monitor_top    resolution 1920x1080@144Hz position 0 0
+output $monitor_bottom resolution 1920x1080@144Hz position 0 1080
+output * bg $bgimage fill
+
+exec swayidle -w \
+  timeout 300 'swaylock -f -i $lockimage' \
+  timeout 360 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+  before-sleep 'swaylock -f -i $lockimage'
+
+seat * hide_cursor when-typing enable
+seat * hide_cursor 10000
+
+input type:keyboard {
+  xkb_layout "se"
+  repeat_rate 100
+  repeat_delay 250
+}
+
+input type:pointer {
+  accel_profile flat
+  pointer_accel 0.1
+}
+
+bindsym $mod+d exec $menu
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+w kill
+bindsym $mod+Shift+r exec swaylock -f -i $lockimage
+bindsym $mod+Shift+c reload
+# simple color picker
+bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | magick - -format '#%[hex:p{0,0}]' info:- | wl-copy
+bindsym $mod+Mod1+c exec swaymsg '[app_id="com.mitchellh.ghostty" title="fal.sh"]' focus || \
+  ghostty \
+  --title="fal.sh - calendar" \
+  --window-width=20 \
+  --window-height=9 \
+  -e sh \
+  -c "LC_ALL=sv_SE.UTF-8 $swaypath/fal.sh;\
+    printf '\e[?25l'; \
+    printf '\e[7;37m'; \
+    read -n 1 -s \
+      -p 'time waits for noone' \
+      -p '   press to close   ' \
+    "
+for_window [app_id="com.mitchellh.ghostty" title="fal.sh - calendar"] \
+  floating enable, \
+  move position 1694 40
+
+# isaac-like exit message
+set $efgc '362C2C'
+set $ebgc 'E9D8DE'
+set $ebrc '726C67'
+bindsym $mod+Shift+e exec swaynag -t warning \
+  -m 'Are you sure you want me to die?' \
+  -s 'No' \
+  -B 'Yes' 'swaymsg exit' \
+  --font 'Finger Paint Bold 12' \
+  --button-gap 12 \
+  --button-dismiss-gap 0 \
+  --button-border-size 4 \
+  --button-margin-right 10 \
+  --text $efgc \
+  --border-bottom $ebrc \
+  --button-background $ebgc \
+  --background $ebgc \
+  --border $ebgc
+
+bar {
+  position top
+  strip_workspace_numbers yes
+  status_command '$swaypath/date.sh'
+
+  colors {
+    statusline #ffffff
+    background #222222bb
+    active_workspace #b7b0d9 #8c86ac #ffffff
+    focused_workspace #8c86ac #5b4d9f #ffffff
+    inactive_workspace #323232bb #323232bb #5c5c5c
+    urgent_workspace #8c4a6e #9f2b4d #ffffff
+  }
+}
+
+floating_modifier $mod normal
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+b splith
+bindsym $mod+v splitv
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+
+bindsym $mod+r mode "resize"
+mode "resize" {
+  bindsym $left resize shrink width 10px
+  bindsym $down resize grow height 10px
+  bindsym $up resize shrink height 10px
+  bindsym $right resize grow width 10px
+
+  bindsym Left resize shrink width 10px
+  bindsym Down resize grow height 10px
+  bindsym Up resize shrink height 10px
+  bindsym Right resize grow width 10px
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym Print exec grim
+bindsym $mod+Shift+s exec grim
+
+# humongus workspace bindings
+# main idea this:
+# workspace 0-9 on my bottom monitor, a-j on my top monitor.
+# but i want all workspaces to be sorted. howeverm only numbered workspaces are sorted.
+# solution: create multiple labels for 0-9 workspaces, and then hide the prefix (done in the `bar` configuration)
+# i bind all these workspces to the respective monitor, so ws "2:b" will always be on the top monitor, and shown as "b"
+workspace 1:1 output $monitor_bottom
+workspace 2:2 output $monitor_bottom
+workspace 3:3 output $monitor_bottom
+workspace 4:4 output $monitor_bottom
+workspace 5:5 output $monitor_bottom
+workspace 6:6 output $monitor_bottom
+workspace 7:7 output $monitor_bottom
+workspace 8:8 output $monitor_bottom
+workspace 9:9 output $monitor_bottom
+workspace 0:0 output $monitor_bottom
+workspace 1:a output $monitor_top
+workspace 2:b output $monitor_top
+workspace 3:c output $monitor_top
+workspace 4:d output $monitor_top
+workspace 5:e output $monitor_top
+workspace 6:f output $monitor_top
+workspace 7:g output $monitor_top
+workspace 8:h output $monitor_top
+workspace 9:i output $monitor_top
+workspace 0:j output $monitor_top
+
+bindsym $mod+1 workspace 1:1
+bindsym $mod+2 workspace 2:2
+bindsym $mod+3 workspace 3:3
+bindsym $mod+4 workspace 4:4
+bindsym $mod+5 workspace 5:5
+bindsym $mod+6 workspace 6:6
+bindsym $mod+7 workspace 7:7
+bindsym $mod+8 workspace 8:8
+bindsym $mod+9 workspace 9:9
+bindsym $mod+0 workspace 0:0
+bindsym $mod+Shift+1 move container to workspace 1:1
+bindsym $mod+Shift+2 move container to workspace 2:2
+bindsym $mod+Shift+3 move container to workspace 3:3
+bindsym $mod+Shift+4 move container to workspace 4:4
+bindsym $mod+Shift+5 move container to workspace 5:5
+bindsym $mod+Shift+6 move container to workspace 6:6
+bindsym $mod+Shift+7 move container to workspace 7:7
+bindsym $mod+Shift+8 move container to workspace 8:8
+bindsym $mod+Shift+9 move container to workspace 9:9
+bindsym $mod+Shift+0 move container to workspace 0:0
+
+bindsym $mod+Control+1 workspace 1:a
+bindsym $mod+Control+2 workspace 2:b
+bindsym $mod+Control+3 workspace 3:c
+bindsym $mod+Control+4 workspace 4:d
+bindsym $mod+Control+5 workspace 5:e
+bindsym $mod+Control+6 workspace 6:f
+bindsym $mod+Control+7 workspace 7:g
+bindsym $mod+Control+8 workspace 8:h
+bindsym $mod+Control+9 workspace 9:i
+bindsym $mod+Control+0 workspace 0:j
+bindsym $mod+Control+Shift+1 move container to workspace 1:a
+bindsym $mod+Control+Shift+2 move container to workspace 2:b
+bindsym $mod+Control+Shift+3 move container to workspace 3:c
+bindsym $mod+Control+Shift+4 move container to workspace 4:d
+bindsym $mod+Control+Shift+5 move container to workspace 5:e
+bindsym $mod+Control+Shift+6 move container to workspace 6:f
+bindsym $mod+Control+Shift+7 move container to workspace 7:g
+bindsym $mod+Control+Shift+8 move container to workspace 8:h
+bindsym $mod+Control+Shift+9 move container to workspace 9:i
+bindsym $mod+Control+Shift+0 move container to workspace 0:j
+
+### i don't reall use the scratchpad
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+
+
+include /etc/sway/config.d/*
+
+### some default comments i want to keep
+# man 5 sway
+# use Mod1 for Alt
+# Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+
+# exec swayidle -w \
+#      timeout 300 'swaylock -f -c 000000' \
+#      timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#      before-sleep 'swaylock -f -c 000000'
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+#
+#   input type:touchpad {
+#     dwt enabled
+#     tap enabled
+#     natural_scroll enabled
+#     middle_emulation enabled
+#   }
+#
+#   input type:keyboard {
+#     xkb_layout "eu"
+#   }
+#
+# Read `man 5 sway-input` for more information about this section.
