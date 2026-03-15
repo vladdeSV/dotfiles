@@ -34,6 +34,8 @@ set completeopt=menuone,noinsert,popup
 set completepopup=border:off " ,highlight:PmenuSel
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
+" workaround: when unsuspending vim, cursor is messed up
+autocmd VimResume * call echoraw(&t_EI)
 " disable "comment continuation" (gets overridden on load, have to resort to this)
 autocmd FileType * set formatoptions-=ro
 autocmd FileType markdown setlocal spell
