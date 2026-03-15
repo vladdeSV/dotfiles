@@ -55,6 +55,12 @@ nnoremap <expr> <Up> v:count ? 'k' : 'gk'
 " omnifunc
 inoremap <C-Space> <C-x><C-o>
 
+" if i yank to clipboard and then suspend vim, i can't paste in the terminal's cli
+" workaround: new session of wl-copy if exists (on my non-wayland systems, i pray)
+if executable('wl-copy')
+  autocmd TextYankPost * if v:event.regname == '+' | call system('setsid wl-copy', join(v:event.regcontents, "\n")) | endif
+endif
+
 " plugin
 call plug#begin("$HOME/.config/vim/plugged")
 
