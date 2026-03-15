@@ -1,6 +1,7 @@
 set $mod Mod4
 set $term ghostty
 set $menu wmenu-run -i -N 222222 -S 5b4d9f -Mff0000 -f "JetBrains Mono 11"
+font "JetBrains Mono 10"
 
 set $swaypath '$HOME/.config/sway'
 set $bgimage "$HOME/Pictures/bg.png"
