@@ -32,6 +32,8 @@ set autoindent
 set fillchars+=vert:│
 set completeopt=menuone,noinsert,popup
 set completepopup=border:off " ,highlight:PmenuSel
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
 " disable "comment continuation" (gets overridden on load, have to resort to this)
 autocmd FileType * set formatoptions-=ro
 autocmd FileType markdown setlocal spell
