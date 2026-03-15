@@ -15,8 +15,7 @@ fg-bg() {
   local suspended=${(M)#jobstates:#suspended:*}
   if (( suspended )); then
     zle push-input
-    zle -I
-    fg
+    zle -I; fg
   else
     zle suspend
   fi
