@@ -1,12 +1,6 @@
 fpath+=("$ZDOTDIR/functions")
-autoload git_prompt_info
-autoload suspended_jobs
-autoload toggle_suspend
-autoload tmp
-
-setopt prompt_subst
-setopt interactive_comments
-setopt hist_ignore_space
+autoload git_prompt_info suspended_jobs toggle_suspend tmp
+setopt prompt_subst interactive_comments hist_ignore_space
 
 PROMPT='%F{12}%1~%f'
 PROMPT+='$(git_prompt_info)'
@@ -18,8 +12,6 @@ bindkey '^Z' toggle_suspend
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 bindkey '^H' backward-kill-word
-
-export GPG_TTY=$(tty)
 
 alias ':q'='echo "deprecated: use ^D instead"'
 alias public-ip='dig +short myip.opendns.com @resolver1.opendns.com'
@@ -48,6 +40,8 @@ if command -v fzf > /dev/null 2>&1; then
 else
   bindkey '^R' history-incremental-search-backward
 fi
+
+export GPG_TTY=$(tty)
 
 # wsl
 if [ -s /proc/version ] && grep -qi microsoft /proc/version; then
