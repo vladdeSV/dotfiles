@@ -2,26 +2,21 @@ export GPG_TTY=$(tty)
 
 fpath+=("$HOME/.config/zsh/functions")
 autoload git_prompt_info
+autoload suspended_jobs
+autoload toggle_suspend
+autoload tmp
 
-precmd() {
-  export PROMPT="%F{12}%1~$(git_prompt_info) %f%(1j.%F{13}* %f.)%(!.#.$)%f "
-}
+PROMPT='%F{12}%1~%f'
+PROMPT+='$(git_prompt_info)'
+PROMPT+='$(suspended_jobs)'
+PROMPT+=' %(!.#.$) '
 
-setopt interactivecomments # allow inline comments (with #)
-setopt histignorespace # ignore commands with leading space
+setopt prompt_subst
+setopt interactive_comments
+setopt hist_ignore_space
 
-# ^Z toggles between suspend and resume
-fg-bg() {
-  local suspended=${(M)#jobstates:#suspended:*}
-  if (( suspended )); then
-    zle push-input
-    zle -I; fg
-  else
-    zle suspend
-  fi
-}
-zle -N fg-bg
-bindkey '^Z' fg-bg
+zle -N toggle_suspend
+bindkey '^Z' toggle_suspend
 
 # simple move back- and forewards
 bindkey '^[[1;5D' backward-word
@@ -40,13 +35,6 @@ alias bat='bat --plain'
 alias man='MANWIDTH=80 man --nj --nh'
 alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
-
-tmp() {
-  local dir
-  dir=$(mktemp -d ${1:+"/tmp/${1}.XXXXXXXXXX"}) || return 1
-  echo "$dir"
-  cd "$dir"
-}
 
 # if eza is installed
 if command -v eza > /dev/null 2>&1; then

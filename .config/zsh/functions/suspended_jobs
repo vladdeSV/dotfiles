@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+suspended_jobs() {
+  local suspended=${(M)#jobstates:#suspended:*}
+  if (( suspended >= 1 )); then
+    local str="%F{13}*"
+    (( suspended >= 2 )) && str="$str%F{5}*"
+    (( suspended >= 3 )) && str="$str%F{8}${(pl:$((suspended - 2))::*:)}"
+    print -n " ${str}%f"
+  fi
+}

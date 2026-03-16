@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+tmp() {
+  local dir
+  dir=$(mktemp -d ${1:+"/tmp/${1}.XXXXXXXXXX"}) || return 1
+  echo "$dir"
+  cd "$dir"
+}
