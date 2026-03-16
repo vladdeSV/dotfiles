@@ -1,27 +1,25 @@
-export GPG_TTY=$(tty)
-
-fpath+=("$HOME/.config/zsh/functions")
+fpath+=("$ZDOTDIR/functions")
 autoload git_prompt_info
 autoload suspended_jobs
 autoload toggle_suspend
 autoload tmp
+
+setopt prompt_subst
+setopt interactive_comments
+setopt hist_ignore_space
 
 PROMPT='%F{12}%1~%f'
 PROMPT+='$(git_prompt_info)'
 PROMPT+='$(suspended_jobs)'
 PROMPT+=' %(!.#.$) '
 
-setopt prompt_subst
-setopt interactive_comments
-setopt hist_ignore_space
-
 zle -N toggle_suspend
 bindkey '^Z' toggle_suspend
-
-# simple move back- and forewards
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 bindkey '^H' backward-kill-word
+
+export GPG_TTY=$(tty)
 
 alias ':q'='echo "deprecated: use ^D instead"'
 alias public-ip='dig +short myip.opendns.com @resolver1.opendns.com'
@@ -68,4 +66,3 @@ if [ "$(uname)" = "Darwin" ]; then
   # easy klog edit
   alias tid='vim + ~/Documents/tid.klg'
 fi
-

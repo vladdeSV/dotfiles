@@ -1,4 +1,6 @@
 export LANG=en_US.UTF-8
+export EDITOR=vim
+export KLOG_CONFIG_HOME="$HOME/.config/klog"
 
 # paths
 declare -A paths
@@ -46,6 +48,3 @@ if [ -d "${paths[bun]}" ]; then
 fi
 
 unset paths
-
-export EDITOR=vim
-export KLOG_CONFIG_HOME=$HOME/.config/klog
