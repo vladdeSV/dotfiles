@@ -51,19 +51,14 @@ bindsym $mod+Shift+r exec swaylock -f -i $lockimage
 bindsym $mod+Shift+c reload
 # simple color picker
 bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | magick - -format '#%[hex:p{0,0}]' info:- | wl-copy
-bindsym $mod+Mod1+c exec swaymsg '[app_id="com.mitchellh.ghostty" title="fal.sh"]' focus || \
+bindsym $mod+Mod1+c exec swaymsg '[app_id="com.mitchellh.ghostty" title="fal.sh - calendar"]' focus || \
   ghostty \
   --title="fal.sh - calendar" \
   --window-width=20 \
   --window-height=9 \
   -e sh \
-  -c "LC_ALL=sv_SE.UTF-8 $swaypath/fal.sh;\
-    printf '\e[?25l'; \
-    printf '\e[7;37m'; \
-    read -n 1 -s \
-      -p 'time waits for noone' \
-      -p '   press to close   ' \
-    "
+  -c "LC_ALL=sv_SE.UTF-8 $swaypath/gal.sh"
+
 for_window [app_id="com.mitchellh.ghostty" title="fal.sh - calendar"] \
   floating enable, \
   move position 1694 40
