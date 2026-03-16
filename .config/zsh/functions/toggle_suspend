@@ -6,6 +6,7 @@ toggle_suspend() {
   if (( suspended )); then
     zle push-input
     zle -I; fg
+    zle reset-prompt
   else
     zle suspend
   fi
