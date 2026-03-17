@@ -2,10 +2,12 @@
 set -eu
 
 program="cal"
-while getopts "b:" opt; do
+hide_bar=0
+while getopts "b:s" opt; do
     case "$opt" in
         b) program="$OPTARG" ;;
-        *) echo "usage: $0 [-b program]" >&2; exit 1 ;;
+        s) hide_bar=1 ;;
+        *) echo "usage: $0 [-s] [-b program]" >&2; exit 1 ;;
     esac
 done
 
@@ -17,10 +19,6 @@ year=$(date +%Y)
 original_month=$month
 original_year=$year
 
-selected_index=0
-
-printf '\033[?1049h' # switch to alternate screen buffer
-printf '\033[?25l' # hide cursor
 
 #      |--------------------|
 legend='[jk] [r]         [q]'
@@ -32,21 +30,32 @@ read_key() {
   stty "$old"
 }
 
-#initial_state=$("$program" "$month" "$year" | sed -n '3,8p' | sed 's/^/ /')
-
+# initial draw, to handle relative cursor movement
 redraw=1
+first_print=1
+
+printf '\033[?25l' # hide cursor
 while true; do
   if [ $redraw -eq 1 ]; then
-    printf '\033[H'
-    "$program" "$month" "$year"
-    printf '\033[7;37m%s\033[0m' "$legend"
+    output=$("$program" --color=always "$month" "$year"; if [ "$hide_bar" -eq 0 ]; then printf '\033[7;37m%s\033[0m\r' "$legend"; fi)
+    move_up_lines=$(printf '%s' "$output" | wc -l)
+    move_back_cols=$(echo "$output" | head -n 1 | wc -m)
+    move_back_cols=$((move_back_cols - 2))
+
+    if [ $first_print -eq 1 ]; then
+      first_print=0
+    else
+      printf '\033[%dA\033[%sD' "$move_up_lines" "$move_back_cols"
+    fi
+    printf '%s' "$output"
   fi;
 
   read_key
 
   redraw=1
   case "$key" in
-    q) break ;;
+    n) ;;
+    q) echo ; break ;;
     k)
       month=$((month - 1))
       if [ "$month" -lt 1 ]; then
@@ -70,4 +79,3 @@ while true; do
 done
 
 printf '\033[?25h' # show cursor
-printf '\033[?1049l' # restore original screen buffer
