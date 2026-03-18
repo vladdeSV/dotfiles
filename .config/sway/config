@@ -63,6 +63,9 @@ for_window [app_id="com.mitchellh.ghostty" title="^calendar$"] \
   floating enable, \
   move position 1694 40
 
+bindsym $mod+Mod1+y exec ghostty --title="ynab import" -e sh -c "cd ~/dev/ynab-handelsbanken && bun . && read key -p 'press any key to close'"
+for_window [app_id="com.mitchellh.ghostty" title="^ynab import$"] floating enable
+
 # isaac-like exit message
 set $efgc '362C2C'
 set $ebgc 'E9D8DE'
