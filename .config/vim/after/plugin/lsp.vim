@@ -5,6 +5,7 @@ endif
 call g:LspOptionsSet(#{
   \ showDiagOnStatusLine: v:true,
   \ autoComplete: v:false,
+  \ ignoreMissingServer: v:true,
   \ })
 
 call g:LspAddServer([
