@@ -81,6 +81,7 @@ Plug 'phelipetls/vim-hugo' " for hugo page
 Plug 'terryma/vim-expand-region' " expands
 Plug 'junegunn/vim-peekaboo' " in register
 Plug 'preservim/nerdtree' " files explorer
+Plug 'fatih/vim-go' " go syntax highlights
 
 call plug#end()
 
