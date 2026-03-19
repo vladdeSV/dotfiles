@@ -39,6 +39,12 @@ call g:LspAddServer([
   \   path: 'bash-language-server',
   \   args: ['start'],
   \ },
+  \ #{
+  \   name: 'c/c++',
+  \   filetype: ['c', 'cpp'],
+  \   path: 'clangd',
+  \   args: ['--background-index', '--clang-tidy'],
+  \ },
   \ ])
 
 autocmd User LspAttached {
