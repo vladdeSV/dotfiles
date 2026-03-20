@@ -9,9 +9,13 @@ PROMPT+=' %(!.#.$) '
 
 zle -N toggle_suspend
 bindkey '^Z' toggle_suspend
+# bind some default key sequences (for WSL)
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
-bindkey '^H' backward-kill-word
+bindkey '^[[H'    beginning-of-line
+bindkey '^[[F'    end-of-line
+bindkey '^[[3~'   delete-char
+bindkey '^H'      backward-kill-word
 
 alias ':q'='echo "deprecated: use ^D instead"'
 alias public-ip='dig +short myip.opendns.com @resolver1.opendns.com'
