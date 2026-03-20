@@ -69,7 +69,7 @@ fi
 if [ -d "$HOME/.bun" ]; then
   export BUN_INSTALL="$HOME/.bun"
   export PATH="$BUN_INSTALL/bin:$PATH"
-  source "$HOME/.bun/_bun"
+  [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 fi
 
-source "$HOME/.config/zsh/local.zsh"
+[ -s "$ZDOTDIR/local.zsh" ] && source "$ZDOTDIR/local.zsh"
