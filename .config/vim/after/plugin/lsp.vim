@@ -5,6 +5,7 @@ endif
 call g:LspOptionsSet(#{
   \ showDiagOnStatusLine: v:true,
   \ autoComplete: v:false,
+  \ ignoreMissingServer: v:true,
   \ })
 
 call g:LspAddServer([
@@ -37,6 +38,12 @@ call g:LspAddServer([
   \   filetype: ['sh', 'bash'],
   \   path: 'bash-language-server',
   \   args: ['start'],
+  \ },
+  \ #{
+  \   name: 'c/c++',
+  \   filetype: ['c', 'cpp'],
+  \   path: 'clangd',
+  \   args: ['--background-index', '--clang-tidy'],
   \ },
   \ ])
 
