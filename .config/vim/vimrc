@@ -93,6 +93,13 @@ hi ExtraWhitespace ctermbg=7
 " diff
 hi SignColumn ctermbg=none
 set updatetime=100
+let g:gitgutter_map_keys = 0
+nmap ghp <Plug>(GitGutterPreviewHunk)
+nmap ghs <Plug>(GitGutterStageHunk)
+nmap ghu <Plug>(GitGutterUndoHunk)
+nmap gh. <Plug>(GitGutterNextHunk)
+nmap gh, <Plug>(GitGutterPrevHunk)
+nmap ghl :GitGutterLineHighlightsToggle<CR>
 
 " neeeeeerdtree
 hi Directory ctermfg=12
