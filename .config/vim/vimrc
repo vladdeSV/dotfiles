@@ -76,6 +76,7 @@ endif
 call plug#begin("$HOME/.config/vim/plugged")
 
 Plug 'tpope/vim-sensible' " insane default
+Plug 'tpope/vim-fugitive' " use git in vim
 Plug 'ntpeters/vim-better-whitespace' " ws
 Plug 'airblade/vim-gitgutter' " git inline
 Plug 'yegappan/lsp' " for language servers
