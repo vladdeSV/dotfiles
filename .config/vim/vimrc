@@ -64,6 +64,7 @@ nnoremap <expr> <Down> v:count ? 'j' : 'gj'
 nnoremap <expr> <Up> v:count ? 'k' : 'gk'
 " omnifunc
 inoremap <expr> <C-Space> empty(&omnifunc) ? "\<C-x>\<C-n>" : "\<C-x>\<C-o>"
+imap <C-@> <C-Space>
 
 " if i yank to clipboard and then suspend vim, i can't paste in the terminal's cli
 " workaround: new session of wl-copy if exists (on my non-wayland systems, i pray)
