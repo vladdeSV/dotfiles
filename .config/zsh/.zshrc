@@ -64,3 +64,12 @@ if [ "$(uname)" = "Darwin" ]; then
   # easy klog edit
   alias tid='vim + ~/Documents/tid.klg'
 fi
+
+# bun completions
+if [ -d "$HOME/.bun" ]; then
+  export BUN_INSTALL="$HOME/.bun"
+  export PATH="$BUN_INSTALL/bin:$PATH"
+  source "$HOME/.bun/_bun"
+fi
+
+source "$HOME/.config/zsh/local.zsh"
