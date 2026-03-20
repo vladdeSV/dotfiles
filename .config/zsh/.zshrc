@@ -60,3 +60,10 @@ if [ "$(uname)" = "Darwin" ]; then
   # easy klog edit
   alias tid='vim + ~/Documents/tid.klg'
 fi
+
+# bun completions
+[ -s "/home/vladde/.bun/_bun" ] && source "/home/vladde/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
