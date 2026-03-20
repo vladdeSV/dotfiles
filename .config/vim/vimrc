@@ -8,7 +8,7 @@ let mapleader = ","
 
 " editor general
 set mouse=a
-set tabstop=8
+set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set textwidth=0
@@ -17,8 +17,6 @@ set number
 set numberwidth=4
 set scrolloff=3
 set wrap
-set splitbelow
-set splitright
 set smartcase
 set hlsearch
 set incsearch
@@ -53,6 +51,9 @@ hi TabLine cterm=underline ctermfg=none ctermbg=none
 hi TabLineFill cterm=none ctermfg=none ctermbg=none
 hi TabLineSel cterm=underline,reverse ctermbg=none ctermfg=none
 hi SpecialKey ctermfg=7
+" folds are hard on the eyes
+hi Folded ctermfg=7 ctermbg=0
+hi FoldColumn ctermbg=0
 
 " ignore just a q press. h*ck i dislike this command...
 map q <Nop>
@@ -84,6 +85,7 @@ Plug 'phelipetls/vim-hugo' " for hugo page
 Plug 'terryma/vim-expand-region' " expands
 Plug 'junegunn/vim-peekaboo' " in register
 Plug 'preservim/nerdtree' " files explorer
+Plug 'fatih/vim-go' " go syntax highlights
 
 call plug#end()
 
