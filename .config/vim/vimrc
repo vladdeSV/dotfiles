@@ -30,6 +30,7 @@ set spellcapcheck= " disable capitalization
 set whichwrap=bs<>hl[]
 set autoindent
 set fillchars+=vert:│
+set listchars=tab:⎸\ 
 set completeopt=menuone,noinsert,popup
 set completepopup=border:off " ,highlight:PmenuSel
 let &t_SI = "\e[6 q"
@@ -51,6 +52,7 @@ hi PmenuMatchSel ctermfg=8 ctermbg=15
 hi TabLine cterm=underline ctermfg=none ctermbg=none
 hi TabLineFill cterm=none ctermfg=none ctermbg=none
 hi TabLineSel cterm=underline,reverse ctermbg=none ctermfg=none
+hi SpecialKey ctermfg=7
 
 " ignore just a q press. h*ck i dislike this command...
 map q <Nop>
