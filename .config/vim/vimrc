@@ -54,6 +54,7 @@ hi SpecialKey ctermfg=7
 " folds are hard on the eyes
 hi Folded ctermfg=7 ctermbg=0
 hi FoldColumn ctermbg=0
+hi SpecialKey ctermfg=7
 
 " ignore just a q press. h*ck i dislike this command...
 map q <Nop>
@@ -112,3 +113,7 @@ nnoremap <leader>ef :NERDTreeFocus<CR>
 nnoremap <leader>ee :NERDTreeToggle<CR>
 nnoremap <leader>ed :NERDTreeFind<CR>
 let g:loaded_netrwPlugin = 1 " disable netrw in favor of NERDtree. i find netrw unstable to work with.
+
+autocmd CompleteDone *.go if get(v:completed_item, 'kind', '') ==# 'f'
+  \ && getline('.')[col('.') - 1] != '('
+  \ | call feedkeys("()\<Left>", "n") | endif

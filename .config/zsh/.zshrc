@@ -66,10 +66,10 @@ if [ "$(uname)" = "Darwin" ]; then
 fi
 
 # bun completions
-[ -s "/home/vladde/.bun/_bun" ] && source "/home/vladde/.bun/_bun"
+if [ -d "$HOME/.bun" ]; then
+  export BUN_INSTALL="$HOME/.bun"
+  export PATH="$BUN_INSTALL/bin:$PATH"
+  [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+fi
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-source "$HOME/.config/zsh/local.zsh"
+[ -s "$ZDOTDIR/local.zsh" ] && source "$ZDOTDIR/local.zsh"
