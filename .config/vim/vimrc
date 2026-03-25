@@ -39,7 +39,7 @@ autocmd VimResume * call echoraw(&t_EI)
 autocmd FileType * set formatoptions-=ro
 autocmd FileType markdown setlocal spell
 autocmd FileType markdown setlocal complete+=kspell
-hi LineNr ctermfg=7
+hi LineNr ctermfg=242
 hi VertSplit cterm=none ctermfg=0
 " completion menu, to look a bit better imo
 hi Pmenu ctermfg=15 ctermbg=0
