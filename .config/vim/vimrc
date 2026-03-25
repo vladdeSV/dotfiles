@@ -93,10 +93,14 @@ call plug#end()
 " dim highlight of trailing whitespace
 hi ExtraWhitespace ctermbg=7
 
-" diff
+" git gutter
 hi SignColumn ctermbg=none
+hi GitGutterAdd    ctermfg=2
+hi GitGutterChange ctermfg=3
+hi GitGutterDelete ctermfg=1
 set updatetime=100
 let g:gitgutter_map_keys = 0
+let g:gitgutter_set_sign_backgrounds = 1
 nmap ghp <Plug>(GitGutterPreviewHunk)
 nmap ghs <Plug>(GitGutterStageHunk)
 nmap ghu <Plug>(GitGutterUndoHunk)
