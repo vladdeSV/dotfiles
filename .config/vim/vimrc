@@ -113,6 +113,15 @@ nnoremap <leader>ee :NERDTreeToggle<CR>
 nnoremap <leader>ed :NERDTreeFind<CR>
 let g:loaded_netrwPlugin = 1 " disable netrw in favor of NERDtree. i find netrw unstable to work with.
 
-autocmd CompleteDone *.go if get(v:completed_item, 'kind', '') ==# 'f'
-  \ && getline('.')[col('.') - 1] != '('
-  \ | call feedkeys("()\<Left>", "n") | endif
+" go
+autocmd CompleteDone *.go
+  \ if get(v:completed_item, 'kind', '') ==# 'f' && getline('.')[col('.') - 1] != '('
+  \ | let s:sig = get(v:completed_item, 'info', get(v:completed_item, 'menu', ''))
+  \ | let s:has_args = s:sig =~# '(\w'
+  \ | call feedkeys(s:has_args ? "()\<Left>" : "()", "n")
+  \ | unlet s:sig s:has_args
+  \ | endif
+autocmd TextChangedI *.go
+  \ if getline('.')[col('.') - 2] ==# '.' |
+  \   call feedkeys("\<C-x>\<C-o>", 'n') |
+  \ endif
