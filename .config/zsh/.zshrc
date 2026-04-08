@@ -32,8 +32,7 @@ alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
 # if eza is installed
 if command -v eza > /dev/null 2>&1; then
-  alias ls='eza -a'
-  alias ll='eza -la'
+  alias ls='eza -1a'
   alias tree="eza --tree"
 fi
 
