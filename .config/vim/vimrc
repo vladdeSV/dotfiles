@@ -63,6 +63,8 @@ vnoremap <leader>y "+y
 " move through softlines (based on https://stackoverflow.com/a/21000307)
 nnoremap <expr> <Down> v:count ? 'j' : 'gj'
 nnoremap <expr> <Up> v:count ? 'k' : 'gk'
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
 " omnifunc
 inoremap <expr> <C-Space> empty(&omnifunc) ? "\<C-x>\<C-n>" : "\<C-x>\<C-o>"
 imap <C-@> <C-Space>
