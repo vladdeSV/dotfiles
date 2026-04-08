@@ -1,6 +1,7 @@
 theme = dark:Noneptune,light:Noneptune Light
 
-font-family = JetBrains Mono
+font-family = "Comic Shanns Mono"
+font-size = 14
 adjust-cell-height = -10%
 
 background-opacity = 0.95
