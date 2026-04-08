@@ -8,13 +8,13 @@ if git rev-parse --is-inside-work-tree &>/dev/null; then
     dynamic+="%F{11}$(git symbolic-ref --short HEAD)%f"
 
     if [[ -n $(git diff --cached) ]]; then
-      dynamic+="%F{9}"
-      dynamic+="?"
+      dynamic+="%F{10}"
+      dynamic+="+"
     fi
 
     if [[ -n $(git diff) ]]; then
       dynamic+="%F{9}"
-      dynamic+="!"
+      dynamic+="+"
     fi
 
     if [[ -n $(git ls-files --others --exclude-standard) ]]; then
