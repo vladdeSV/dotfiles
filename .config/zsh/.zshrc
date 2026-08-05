@@ -48,6 +48,15 @@ export GPG_TTY=$(tty)
 # wsl
 if [ -e /proc/version ] && grep -qi microsoft /proc/version; then
   alias open=explorer.exe
+  alias copy=clip.exe
+
+  function uuid() {
+    uuid=$(uuidgen)
+    printf "$uuid\n"
+    printf "$uuid" | clip.exe
+    >&2 printf "(copied to clipboard)\n"
+  }
+  alias guid=uuid
 fi
 
 # macOS
