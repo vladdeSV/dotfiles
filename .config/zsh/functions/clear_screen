@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+clear_screen() {
+    # \e[H  move cursor to "home"
+    # \e[2J clear screen
+    # \e[3J clear scrollback
+    builtin print -rn -- $'\e[H\e[2J\e[3J'
+
+    zle .reset-prompt
+    zle -R
+}
