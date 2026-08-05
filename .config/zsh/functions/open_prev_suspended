@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+# resume the "second in queue" suspended task
+open_prev_suspended() {
+  local suspended=${(M)#jobstates:#suspended:*}
+  if (( suspended == 1 )); then
+    printf "only one job in queue\n"
+  elif (( suspended > 1 )); then
+    zle push-input
+    zle -I; fg %-
+    zle get-line
+    zle reset-prompt
+  fi
+}

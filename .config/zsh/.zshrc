@@ -1,5 +1,5 @@
 fpath+=("$ZDOTDIR/functions")
-autoload git_prompt_info suspended_jobs toggle_suspend tmp
+autoload git_prompt_info suspended_jobs toggle_suspend open_prev_suspended tmp
 setopt prompt_subst interactive_comments hist_ignore_space no_nomatch
 
 PROMPT='%F{12}%1~%f'
@@ -8,7 +8,9 @@ PROMPT+='$(suspended_jobs)'
 PROMPT+=' %(!.#.$) '
 
 zle -N toggle_suspend
+zle -N open_prev_suspended
 bindkey '^Z' toggle_suspend
+bindkey '^\\' open_prev_suspended # this is the key left of Z for me
 # bind some default key sequences (for WSL)
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
