@@ -70,4 +70,9 @@ if [ -d "$HOME/.bun" ]; then
   [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 fi
 
+# swift
+if [ -s "$HOME/.local/share/swiftly/env.sh" ]; then
+  source "$HOME/.local/share/swiftly/env.sh"
+fi
+
 [ -s "$ZDOTDIR/local.zsh" ] && source "$ZDOTDIR/local.zsh"
