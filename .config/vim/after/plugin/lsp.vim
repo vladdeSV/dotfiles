@@ -45,6 +45,13 @@ call g:LspAddServer([
   \   path: 'clangd',
   \   args: ['--background-index', '--clang-tidy'],
   \ },
+  \ #{
+  \   name: 'sourcekit-lsp',
+  \   filetype: ['swift', 'c', 'cpp', 'objc', 'objcpp'],
+  \   path: 'sourcekit-lsp',
+  \   args: [],
+  \   rootmarkers: ['Package.swift', '.git']
+  \ },
   \ ])
 
 autocmd User LspAttached {
