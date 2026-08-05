@@ -138,3 +138,6 @@ autocmd TextChangedI *.go
   \ if getline('.')[col('.') - 2] ==# '.' |
   \   call feedkeys("\<C-x>\<C-o>", 'n') |
   \ endif
+
+" klog
+autocmd BufRead,BufNewFile *.klg set filetype=klog
