@@ -27,7 +27,6 @@ alias pbcopy='wl-copy'   # mac-alike alias
 alias pbpaste='wl-paste'
 alias bat='bat --plain'
 alias man='MANWIDTH=80 man --nj --nh'
-alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
 # if eza is installed
