@@ -46,7 +46,7 @@ fi
 export GPG_TTY=$(tty)
 
 # wsl
-if [ -s /proc/version ] && grep -qi microsoft /proc/version; then
+if [ -e /proc/version ] && grep -qi microsoft /proc/version; then
   alias open=explorer.exe
 fi
 
