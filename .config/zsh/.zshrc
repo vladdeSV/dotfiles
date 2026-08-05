@@ -1,6 +1,6 @@
 fpath+=("$ZDOTDIR/functions")
 autoload git_prompt_info suspended_jobs toggle_suspend tmp
-setopt prompt_subst interactive_comments hist_ignore_space
+setopt prompt_subst interactive_comments hist_ignore_space no_nomatch
 
 PROMPT='%F{12}%1~%f'
 PROMPT+='$(git_prompt_info)'
