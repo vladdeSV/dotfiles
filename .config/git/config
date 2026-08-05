@@ -28,8 +28,9 @@
   st = status -sb
   cm = commit
   tree = log --graph --all --oneline
-  filehist = log -p -M --follow --stat --
+  filehist = log -p -M --follow --stat
   diffs = diff --staged
+  unstage = restore --staged
 
 [rerere]
   enabled = true
