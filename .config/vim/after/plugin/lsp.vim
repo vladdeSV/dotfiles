@@ -63,4 +63,6 @@ autocmd User LspAttached {
   nnoremap <buffer> <leader>la :LspCodeAction<CR>
   nnoremap <buffer> <leader>lf :LspFormat<CR>
   nnoremap <buffer> <leader>ls :LspDiag show<CR>
+  nnoremap <buffer> <leader>l. :LspDiag nextWrap<CR>
+  nnoremap <buffer> <leader>l, :LspDiag prevWrap<CR>
 }
