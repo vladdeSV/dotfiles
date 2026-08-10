@@ -35,6 +35,7 @@ alias pbcopy='wl-copy'   # mac-alike alias
 alias pbpaste='wl-paste'
 alias bat='bat --plain'
 alias man='MANWIDTH=80 man --nj --nh'
+alias dev="cd $HOME/dev" # i always have a ~/dev for development
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
 # if eza is installed
