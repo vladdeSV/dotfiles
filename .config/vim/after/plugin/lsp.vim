@@ -17,7 +17,7 @@ call g:LspAddServer([
   \ },
   \ #{
   \   name: 'biome',
-  \   filetype: ['javascript', 'typescript', 'json', 'css'],
+  \   filetype: ['javascript', 'typescript'],
   \   path: 'biome',
   \   args: ['lsp-proxy'],
   \ },
@@ -31,6 +31,18 @@ call g:LspAddServer([
   \   name: 'css',
   \   filetype: ['css'],
   \   path: 'vscode-css-language-server',
+  \   args: ['--stdio'],
+  \ },
+  \ #{
+  \   name: 'json',
+  \   filetype: ['json'],
+  \   path: 'vscode-json-language-server',
+  \   args: ['--stdio'],
+  \ },
+  \ #{
+  \   name: 'markdown',
+  \   filetype: ['markdown'],
+  \   path: 'vscode-markdown-language-server',
   \   args: ['--stdio'],
   \ },
   \ #{
