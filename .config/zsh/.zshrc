@@ -1,3 +1,7 @@
+if [ -s /etc/profile ]; then
+  source /etc/profile
+fi
+
 fpath+=("$ZDOTDIR/functions")
 autoload git_prompt_info suspended_jobs toggle_suspend open_prev_suspended tmp clear_screen
 setopt prompt_subst interactive_comments hist_ignore_space no_nomatch
