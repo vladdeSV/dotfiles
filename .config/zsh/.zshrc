@@ -60,6 +60,8 @@ if [ -n "$WSL_DISTRO_NAME" ]; then
   alias open=explorer.exe
   alias copy=clip.exe
 
+  trap 'exit 0' EXIT # wip: workaround when prev command failed and i do ^D
+
   function uuid() {
     uuid=$(uuidgen)
     printf "$uuid\n"
