@@ -56,7 +56,7 @@ fi
 export GPG_TTY=$(tty)
 
 # wsl
-if [ -e /proc/version ] && grep -qi microsoft /proc/version; then
+if [ -n "$WSL_DISTRO_NAME" ]; then
   alias open=explorer.exe
   alias copy=clip.exe
 
