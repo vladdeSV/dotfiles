@@ -33,10 +33,8 @@ alias vimrc="$EDITOR $HOME/.config/vim/vimrc"
 alias zshrc="$EDITOR $HOME/.config/zsh/.zshrc"
 alias pbcopy='wl-copy'   # mac-alike alias
 alias pbpaste='wl-paste'
-alias bat='bat --plain'
 alias man='MANWIDTH=80 man --nj --nh'
 alias dev="cd $HOME/dev" # i always have a ~/dev for development
-alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
 is_installed() {
   command -v "$1" > /dev/null 2>&1
@@ -50,6 +48,11 @@ fi
 
 if is_installed rg; then
   source <(rg --generate complete-zsh)
+fi
+
+if is_installed bat; then
+  alias bat='bat --plain'
+  alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
