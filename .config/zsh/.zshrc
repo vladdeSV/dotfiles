@@ -38,24 +38,22 @@ alias man='MANWIDTH=80 man --nj --nh'
 alias dev="cd $HOME/dev" # i always have a ~/dev for development
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
-executable() {
+is_installed() {
   command -v "$1" > /dev/null 2>&1
 }
 
-# if eza is installed
-if executable eza; then
+if is_installed eza; then
   alias ls='eza -a'
   alias ll='eza -la'
   alias tree="eza --tree"
 fi
 
-# if ripgrep is installed
-if executable rg; then
+if is_installed rg; then
   source <(rg --generate complete-zsh)
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-if executable fzf; then
+if is_installed fzf; then
   export FZF_DEFAULT_OPTS="--layout=reverse --border --color=border:8,prompt:15,current-bg:0,current-fg:-1,pointer:15,hl:8,current-hl:15,info:15"
   source <(fzf --zsh)
   bindkey '^R' fzf-history-widget
