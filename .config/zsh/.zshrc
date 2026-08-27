@@ -38,20 +38,24 @@ alias man='MANWIDTH=80 man --nj --nh'
 alias dev="cd $HOME/dev" # i always have a ~/dev for development
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
+executable() {
+  command -v "$1" > /dev/null 2>&1
+}
+
 # if eza is installed
-if command -v eza > /dev/null 2>&1; then
+if executable eza; then
   alias ls='eza -a'
   alias ll='eza -la'
   alias tree="eza --tree"
 fi
 
 # if ripgrep is installed
-if command -v rg > /dev/null 2>&1; then
+if executable rg; then
   source <(rg --generate complete-zsh)
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-if command -v fzf > /dev/null 2>&1; then
+if executable fzf; then
   export FZF_DEFAULT_OPTS="--layout=reverse --border --color=border:8,prompt:15,current-bg:0,current-fg:-1,pointer:15,hl:8,current-hl:15,info:15"
   source <(fzf --zsh)
   bindkey '^R' fzf-history-widget
@@ -75,19 +79,6 @@ if [ -n "$WSL_DISTRO_NAME" ]; then
     >&2 printf "(copied to clipboard)\n"
   }
   alias guid=uuid
-fi
-
-# macOS
-if [ "$(uname)" = "Darwin" ]; then
-  alias finder='open -a Finder'
-  alias ipl="ipconfig getifaddr en0"
-  alias ipp="dig +short myip.opendns.com @resolver1.opendns.com"
-  alias day="date +%A"
-  alias week="date +%V"
-  alias year="date +%Y"
-
-  # easy klog edit
-  alias tid='vim + ~/Documents/tid.klg'
 fi
 
 # bun completions
