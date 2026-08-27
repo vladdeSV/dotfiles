@@ -28,6 +28,7 @@ set spellcapcheck= " disable capitalization
 set whichwrap=bs<>hl[]
 set autoindent
 set fillchars+=vert:│
+set list
 set listchars=tab:⎸\ 
 set completeopt=menuone,noinsert,popup
 set completepopup=border:off " ,highlight:PmenuSel
