@@ -91,7 +91,6 @@ Plug 'yegappan/lsp' " for language servers
 Plug 'phelipetls/vim-hugo' " for hugo page
 Plug 'terryma/vim-expand-region' " expands
 Plug 'junegunn/vim-peekaboo' " in register
-Plug 'preservim/nerdtree' " files explorer
 Plug 'skywind3000/asyncrun.vim' " run cmds
 
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} " multicursor
@@ -117,16 +116,6 @@ nmap ghu <Plug>(GitGutterUndoHunk)
 nmap gh. <Plug>(GitGutterNextHunk)
 nmap gh, <Plug>(GitGutterPrevHunk)
 nmap ghl :GitGutterLineHighlightsToggle<CR>
-
-" neeeeeerdtree
-hi Directory ctermfg=12
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeWinPos = 'right'
-let g:NERDTreeWinSize = 40
-nnoremap <leader>ef :NERDTreeFocus<CR>
-nnoremap <leader>ee :NERDTreeToggle<CR>
-nnoremap <leader>ed :NERDTreeFind<CR>
-let g:loaded_netrwPlugin = 1 " disable netrw in favor of NERDtree. i find netrw unstable to work with.
 
 " go
 autocmd CompleteDone *.go
