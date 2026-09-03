@@ -24,6 +24,8 @@ bindkey '^[[H'    beginning-of-line
 bindkey '^[[F'    end-of-line
 bindkey '^[[3~'   delete-char
 bindkey '^H'      backward-kill-word
+bindkey '^?'      backward-delete-char
+bindkey '^H'      backward-delete-char
 
 alias ':q'='echo "deprecated: use ^D instead"'
 alias public-ip='dig +short myip.opendns.com @resolver1.opendns.com'
