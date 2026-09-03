@@ -2,7 +2,7 @@ if [ -s /etc/profile ]; then
   source /etc/profile
 fi
 
-fpath+=("$ZDOTDIR/functions")
+typeset -gaU fpath=("$ZDOTDIR/functions" "~/.local/share/zsh/site-functions" $fpath)
 autoload git_prompt_info suspended_jobs toggle_suspend open_prev_suspended tmp clear_screen
 setopt prompt_subst interactive_comments hist_ignore_space no_nomatch
 
@@ -26,6 +26,8 @@ bindkey '^[[3~'   delete-char
 bindkey '^H'      backward-kill-word
 bindkey '^?'      backward-delete-char
 bindkey '^H'      backward-delete-char
+
+export GPG_TTY=$(tty)
 
 alias ':q'='echo "deprecated: use ^D instead"'
 alias public-ip='dig +short myip.opendns.com @resolver1.opendns.com'
@@ -65,8 +67,6 @@ if is_installed fzf; then
 else
   bindkey '^R' history-incremental-search-backward
 fi
-
-export GPG_TTY=$(tty)
 
 # wsl
 if [ -n "$WSL_DISTRO_NAME" ]; then
