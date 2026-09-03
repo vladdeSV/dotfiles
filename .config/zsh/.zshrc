@@ -2,6 +2,16 @@ if [ -s /etc/profile ]; then
   source /etc/profile
 fi
 
+# todo: taken from online, check if this is really works as intended
+ZCOMPDUMP="$ZDOTDIR/.zcompdump"
+autoload -Uz compinit
+if [[ -s "$ZCOMPDUMP" && -n "$ZCOMPDUMP"(#qN.m-1) ]]; then
+  compinit -C -d "$ZCOMPDUMP"
+else
+  compinit -d "$ZCOMPDUMP"
+  zcompile "$ZCOMPDUMP" &!
+fi
+
 typeset -gaU fpath=("$ZDOTDIR/functions" "~/.local/share/zsh/site-functions" $fpath)
 autoload git_prompt_info suspended_jobs toggle_suspend open_prev_suspended tmp clear_screen
 setopt prompt_subst interactive_comments hist_ignore_space no_nomatch
