@@ -52,11 +52,10 @@ hi PmenuMatchSel ctermfg=8 ctermbg=15
 hi TabLine cterm=underline ctermfg=none ctermbg=none
 hi TabLineFill cterm=none ctermfg=none ctermbg=none
 hi TabLineSel cterm=underline,reverse ctermbg=none ctermfg=none
-hi SpecialKey ctermfg=7
 " folds are hard on the eyes
 hi Folded ctermfg=7 ctermbg=0
 hi FoldColumn ctermbg=0
-hi SpecialKey ctermfg=7
+hi SpecialKey ctermfg=238
 " highlight current selected window
 hi StatusLine cterm=none ctermfg=0 ctermbg=12
 
