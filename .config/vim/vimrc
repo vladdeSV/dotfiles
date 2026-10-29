@@ -81,7 +81,7 @@ if executable('wl-copy')
 endif
 
 " plugin
-call plug#begin("$HOME/.config/vim/plugged")
+call plug#begin(split(&runtimepath, ',')[0] . '/plugged')
 
 Plug 'tpope/vim-sensible' " insane default
 Plug 'tpope/vim-fugitive' " use git in vim
