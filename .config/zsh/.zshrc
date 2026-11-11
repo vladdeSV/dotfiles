@@ -32,6 +32,7 @@ alias pbpaste='wl-paste'
 alias bat='bat --plain'
 alias man='MANWIDTH=80 man --nj --nh'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+alias server='python3 -m http.server'
 
 # if eza is installed
 if command -v eza > /dev/null 2>&1; then
