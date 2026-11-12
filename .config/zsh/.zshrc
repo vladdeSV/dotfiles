@@ -1,4 +1,18 @@
-fpath+=("$ZDOTDIR/functions")
+if [ -s /etc/profile ]; then
+  source /etc/profile
+fi
+
+# todo: taken from online, check if this is really works as intended
+ZCOMPDUMP="$ZDOTDIR/.zcompdump"
+autoload -Uz compinit
+if [[ -s "$ZCOMPDUMP" && -n "$ZCOMPDUMP"(#qN.m-1) ]]; then
+  compinit -C -d "$ZCOMPDUMP"
+else
+  compinit -d "$ZCOMPDUMP"
+  zcompile "$ZCOMPDUMP" &!
+fi
+
+typeset -gaU fpath=("$ZDOTDIR/functions" "~/.local/share/zsh/site-functions" $fpath)
 autoload git_prompt_info suspended_jobs toggle_suspend open_prev_suspended tmp clear_screen
 setopt prompt_subst interactive_comments hist_ignore_space no_nomatch
 
@@ -20,6 +34,10 @@ bindkey '^[[H'    beginning-of-line
 bindkey '^[[F'    end-of-line
 bindkey '^[[3~'   delete-char
 bindkey '^H'      backward-kill-word
+bindkey '^?'      backward-delete-char
+bindkey '^H'      backward-delete-char
+
+export GPG_TTY=$(tty)
 
 alias ':q'='echo "deprecated: use ^D instead"'
 alias public-ip='dig +short myip.opendns.com @resolver1.opendns.com'
@@ -29,31 +47,45 @@ alias vimrc="$EDITOR $HOME/.config/vim/vimrc"
 alias zshrc="$EDITOR $HOME/.config/zsh/.zshrc"
 alias pbcopy='wl-copy'   # mac-alike alias
 alias pbpaste='wl-paste'
-alias bat='bat --plain'
 alias man='MANWIDTH=80 man --nj --nh'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 alias server='python3 -m http.server'
+alias dev="cd $HOME/dev" # i always have a ~/dev for development
 
-# if eza is installed
-if command -v eza > /dev/null 2>&1; then
-  alias ls='eza -1a'
+is_installed() {
+  command -v "$1" > /dev/null 2>&1
+}
+
+if is_installed eza; then
+  alias ls='eza -a'
+  alias ll='eza -la'
   alias tree="eza --tree"
 fi
 
-if command -v fzf > /dev/null 2>&1; then
-  export FZF_DEFAULT_OPTS="--layout=reverse --border --color=border:8,prompt:15,current-bg:0,current-fg:-1,pointer:15,hl:8,current-hl:15,info:15"
+if is_installed rg; then
+  source <(rg --generate complete-zsh)
+fi
+
+if is_installed bat; then
+  alias bat='bat --plain'
+  alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if is_installed fzf; then
+  export FZF_DEFAULT_OPTS="--layout=reverse --border --color=border:8,prompt:15,bg+:-1,fg+:-1,pointer:15,hl:8,current-hl:15,info:15"
   source <(fzf --zsh)
   bindkey '^R' fzf-history-widget
 else
   bindkey '^R' history-incremental-search-backward
 fi
 
-export GPG_TTY=$(tty)
-
 # wsl
-if [ -e /proc/version ] && grep -qi microsoft /proc/version; then
+if [ -n "$WSL_DISTRO_NAME" ]; then
   alias open=explorer.exe
   alias copy=clip.exe
+
+  trap 'exit 0' EXIT # wip: workaround when prev command failed and i do ^D
 
   function uuid() {
     uuid=$(uuidgen)
@@ -64,23 +96,10 @@ if [ -e /proc/version ] && grep -qi microsoft /proc/version; then
   alias guid=uuid
 fi
 
-# macOS
-if [ "$(uname)" = "Darwin" ]; then
-  alias finder='open -a Finder'
-  alias ipl="ipconfig getifaddr en0"
-  alias ipp="dig +short myip.opendns.com @resolver1.opendns.com"
-  alias day="date +%A"
-  alias week="date +%V"
-  alias year="date +%Y"
-
-  # easy klog edit
-  alias tid='vim + ~/Documents/tid.klg'
-fi
-
 # bun completions
 if [ -d "$HOME/.bun" ]; then
   export BUN_INSTALL="$HOME/.bun"
-  export PATH="$BUN_INSTALL/bin:$PATH"
+  path+=("$BUN_INSTALL/bin")
   [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 fi
 

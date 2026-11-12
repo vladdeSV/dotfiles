@@ -8,29 +8,11 @@ call g:LspOptionsSet(#{
   \ ignoreMissingServer: v:true,
   \ })
 
-call g:LspAddServer([
+autocmd User LspSetup call g:LspAddServer([
   \ #{
   \   name: 'typescript',
   \   filetype: ['javascript', 'typescript'],
   \   path: 'typescript-language-server',
-  \   args: ['--stdio'],
-  \ },
-  \ #{
-  \   name: 'biome',
-  \   filetype: ['javascript', 'typescript', 'json', 'css'],
-  \   path: 'biome',
-  \   args: ['lsp-proxy'],
-  \ },
-  \ #{
-  \   name: 'html',
-  \   filetype: ['html'],
-  \   path: 'vscode-html-language-server',
-  \   args: ['--stdio'],
-  \ },
-  \ #{
-  \   name: 'css',
-  \   filetype: ['css'],
-  \   path: 'vscode-css-language-server',
   \   args: ['--stdio'],
   \ },
   \ #{
@@ -63,4 +45,6 @@ autocmd User LspAttached {
   nnoremap <buffer> <leader>la :LspCodeAction<CR>
   nnoremap <buffer> <leader>lf :LspFormat<CR>
   nnoremap <buffer> <leader>ls :LspDiag show<CR>
+  nnoremap <buffer> <leader>l. :LspDiag nextWrap<CR>
+  nnoremap <buffer> <leader>l, :LspDiag prevWrap<CR>
 }

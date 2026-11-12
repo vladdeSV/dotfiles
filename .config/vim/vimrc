@@ -28,13 +28,15 @@ set spellcapcheck= " disable capitalization
 set whichwrap=bs<>hl[]
 set autoindent
 set fillchars+=vert:│
-set listchars=tab:⎸\ 
+set list
+set listchars=tab:⎸\ ,trail:·
 set completeopt=menuone,noinsert,popup
 set completepopup=border:off " ,highlight:PmenuSel
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
-" workaround: when unsuspending vim, cursor is messed up
-autocmd VimResume * call echoraw(&t_EI)
+let &t_te .= "\e[0 q" " append "reset cursor" on exit
+autocmd VimResume * call echoraw(&t_EI) " workaround: when unsuspending vim, cursor is messed up
+autocmd VimEnter  * call echoraw(&t_EI) " workaround: on start, set normal mode cursor
 " disable "comment continuation" (gets overridden on load, have to resort to this)
 autocmd FileType * set formatoptions-=ro
 autocmd FileType markdown setlocal spell
@@ -53,20 +55,20 @@ hi TabLineSel cterm=underline,reverse ctermbg=none ctermfg=none
 " folds are hard on the eyes
 hi Folded ctermfg=7 ctermbg=0
 hi FoldColumn ctermbg=0
-hi SpecialKey ctermfg=7
+hi SpecialKey ctermfg=238
 " highlight current selected window
 hi StatusLine cterm=none ctermfg=0 ctermbg=12
 
 " ignore just a q press. h*ck i dislike this command...
 map q <Nop>
 " yank to clipboard
-vnoremap <leader>c "+y
 vnoremap <leader>y "+y
-" move through softlines (based on https://stackoverflow.com/a/21000307)
-nnoremap <expr> <Down> v:count ? 'j' : 'gj'
-nnoremap <expr> <Up> v:count ? 'k' : 'gk'
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
+" move through softlines (based on https://stackoverflow.com/a/21000307), but
+" only when popup is not visible
+nnoremap <expr> <Down> pumvisible() ? "\<Down>" : (v:count ? 'j' : 'gj')
+nnoremap <expr> <Up>   pumvisible() ? "\<Up>"   : (v:count ? 'k' : 'gk')
+inoremap <expr> <Down> pumvisible() ? "\<Down>" : "\<C-o>gj"
+inoremap <expr> <Up>   pumvisible() ? "\<Up>"   : "\<C-o>gk"
 " omnifunc
 inoremap <expr> <C-Space> empty(&omnifunc) ? "\<C-x>\<C-n>" : "\<C-x>\<C-o>"
 imap <C-@> <C-Space>
@@ -78,7 +80,7 @@ if executable('wl-copy')
 endif
 
 " plugin
-call plug#begin("$HOME/.config/vim/plugged")
+call plug#begin(split(&runtimepath, ',')[0] . '/plugged')
 
 Plug 'tpope/vim-sensible' " insane default
 Plug 'tpope/vim-fugitive' " use git in vim
@@ -91,9 +93,11 @@ Plug 'junegunn/vim-peekaboo' " in register
 Plug 'preservim/nerdtree' " files explorer
 Plug 'fatih/vim-go' " go syntax highlights
 Plug 'skywind3000/asyncrun.vim' " run cmds
+Plug 'd2lang/d2-vim' " d2lang highlighting
 
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} " multicursor
 Plug 'keith/swift.vim', { 'for': 'swift' } " modern swift for vim
+Plug 'fatih/vim-go', { 'for': 'go' } " golang advanced syntax+lsp
 
 call plug#end()
 
@@ -115,16 +119,20 @@ nmap gh. <Plug>(GitGutterNextHunk)
 nmap gh, <Plug>(GitGutterPrevHunk)
 nmap ghl :GitGutterLineHighlightsToggle<CR>
 
-" neeeeeerdtree
-hi Directory ctermfg=12
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeWinPos = 'right'
-let g:NERDTreeWinSize = 40
-nnoremap <leader>ef :NERDTreeFocus<CR>
-nnoremap <leader>ee :NERDTreeToggle<CR>
-nnoremap <leader>ed :NERDTreeFind<CR>
-let g:loaded_netrwPlugin = 1 " disable netrw in favor of NERDtree. i find netrw unstable to work with.
+" go
+autocmd CompleteDone *.go
+  \ if get(v:completed_item, 'kind', '') ==# 'f' && getline('.')[col('.') - 1] != '('
+  \ | let s:sig = get(v:completed_item, 'info', get(v:completed_item, 'menu', ''))
+  \ | let s:has_args = s:sig =~# '(\w'
+  \ | call feedkeys(s:has_args ? "()\<Left>" : "()", "n")
+  \ | unlet s:sig s:has_args
+  \ | endif
+autocmd TextChangedI *.go
+  \ if getline('.')[col('.') - 2] ==# '.' |
+  \   call feedkeys("\<C-x>\<C-o>", 'n') |
+  \ endif
 
+<<<<<<< HEAD
 " go
 autocmd CompleteDone *.go
   \ if get(v:completed_item, 'kind', '') ==# 'f' && getline('.')[col('.') - 1] != '('
