@@ -132,7 +132,6 @@ autocmd TextChangedI *.go
   \   call feedkeys("\<C-x>\<C-o>", 'n') |
   \ endif
 
-<<<<<<< HEAD
 " go
 autocmd CompleteDone *.go
   \ if get(v:completed_item, 'kind', '') ==# 'f' && getline('.')[col('.') - 1] != '('
